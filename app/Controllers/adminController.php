@@ -4,12 +4,204 @@ namespace App\Controllers;
 
 use App\Models\adminModel;
 use App\Models\categoriesModel;
+use App\Models\productModel;
 
 class adminController extends BaseController
 {
 
+    public function setupdatedata()
+    {
+        // print_r($this->request->getVar());
+        $categoriesModel = new categoriesModel();
+        $session = session();
+        if (isset($this->request->getVar()['status'])) {
+            $status = 1;
+        } else {
+            $status = 0;
+        }
+        $category_id = $this->request->getVar()['category_id'];
+        $category_name = $this->request->getVar()['category_name'];
+        $category_desc = $this->request->getVar()['category_desc'];
+        $category_image = $this->request->getVar()['category_image'];
+        $data = [
+            "category_name" => $category_name,
+            "category_desc" => $category_desc,
+            "category_image" => $category_image,
+            "status" => $status
+        ];
+        $categoriesModel->update($category_id, $data);
+        if ($categoriesModel->update($category_id, $data)) {
+
+            $session->setFlashdata("success", "<strong>Data Updated Successfully &#128522;</strong>");
+            return redirect()->to('tablebasic');
+        } else {
+            $session->setFlashdata("error", "Data cant update due to technical reason.!");
+            return redirect()->to('tablebasic');
+        }
+    }
+
+    public function editProduct()
+    {
+        print_r($this->request->getVar());
+        $productModel = new productModel();
+        $session = session();
+        if (isset($this->request->getVar()['status'])) {
+            $status = 1;
+        } else {
+            $status = 0;
+        }
+        $productname = $this->request->getVar()['productname'];
+        $productid = $this->request->getVar()['productid'];
+        $productimg = $this->request->getVar()['productimg'];
+        $productdesc = $this->request->getVar()['productdesc'];
+        $productprice = $this->request->getVar()['productprice'];
+        $productcatid = $this->request->getVar()['productcatid'];
+        $data = [
+            "product_name" => $productname,
+            "product_desc" => $productdesc,
+            "product_img" => $productimg,
+            "product_price" => $productprice,
+            "category_id" => $productcatid,
+            "status" => $status,
+        ];
+        if ($productModel->update($productid, $data)) {
+            $session->setFlashdata("success", "<strong>Data Updated Successfully &#128522;</strong>");
+            return redirect()->to('tablebasic');
+        } else {
+            $session->setFlashdata("error", "Data cant update due to technical reason.!");
+            return redirect()->to('tablebasic');
+        }
+    }
+
+    public function addProduct()
+    {
+        $session = session();
+        if ($session->get('username')) {
+            $productModel = new productModel();
+            $productname = $this->request->getVar()['productname'];
+            $productdesc = $this->request->getVar()['productdesc'];
+            $productimg = $this->request->getVar()['productimg'];
+            $productprice = $this->request->getVar()['productprice'];
+            $catid = $this->request->getVar()['catid'];
+            $userid = $session->get("user_id");
+            if (isset($this->request->getVar()['status'])) {
+                $status = 1;
+                echo "status set";
+            } else {
+                echo "status Unset";
+                $status = 0;
+            }
+            $data = [
+                "product_name" => $productname,
+                "product_desc" => $productdesc,
+                "product_img" => $productimg,
+                "product_price" => $productprice,
+                "category_id" => $catid,
+                "user_id" => $userid,
+                "status" => $status
+            ];
+            if ($productModel->insert($data)) {
+
+                $session->setFlashdata("success", "<strong>Product Inserted Successfully &#128522;</strong>");
+                return redirect()->to('tablebasic');
+            } else {
+                $session->setFlashdata("error", "Product cannot be inserted due to technical reason.!");
+                return redirect()->to('tablebasic');
+            }
+
+
+            // if ($num != null) {
+            //     $userModel = new categoriesModel();
+            //     $delete = [
+            //         "id" => $num
+            //     ];
+            //     if ($userModel->delete($delete)) {
+            //         $session->setFlashdata("success", "Data Deleted Successfully..!");
+            //         return redirect()->to('tablebasic');
+            //     } else {
+            //         $session->setFlashdata("error", "Issues Deleting the data, Please Try again After Sometime..!");
+            //         return redirect()->to('tablebasic');
+            //     }
+            // }
+        } else {
+            return redirect()->to("/");
+        }
+    }
+
+
+    public function addCategory()
+    {
+        $session = session();
+        if ($session->get('username')) {
+            $categoriesModel = new categoriesModel();
+            $catname = $this->request->getVar()['catname'];
+            $catdesc = $this->request->getVar()['catdesc'];
+            $catimg = $this->request->getVar()['catimg'];
+            $userid = $session->get("user_id");
+            if (isset($this->request->getVar()['status'])) {
+                $status = 1;
+                echo "status set";
+            } else {
+                echo "status Unset";
+                $status = 0;
+            }
+            $data = [
+                "category_name" => $catname,
+                "category_desc" => $catdesc,
+                "category_img" => $catimg,
+                "user_id" => $userid,
+                "status" => $status
+            ];
+            if ($categoriesModel->insert($data)) {
+
+                $session->setFlashdata("success", "<strong>Data Inserted Successfully &#128522;</strong>");
+                return redirect()->to('tablebasic');
+            } else {
+                $session->setFlashdata("error", "Data cannot be inserted due to technical reason.!");
+                return redirect()->to('tablebasic');
+            }
+
+
+            // if ($num != null) {
+            //     $userModel = new categoriesModel();
+            //     $delete = [
+            //         "id" => $num
+            //     ];
+            //     if ($userModel->delete($delete)) {
+            //         $session->setFlashdata("success", "Data Deleted Successfully..!");
+            //         return redirect()->to('tablebasic');
+            //     } else {
+            //         $session->setFlashdata("error", "Issues Deleting the data, Please Try again After Sometime..!");
+            //         return redirect()->to('tablebasic');
+            //     }
+            // }
+        } else {
+            return redirect()->to("/");
+        }
+    }
 
     // Delete Single Data from Database 
+    public function deleteProduct($num = null)
+    {
+        $session = session();
+        if ($session->get('username')) {
+            if ($num != null) {
+                $userModel = new productModel();
+                $delete = [
+                    "id" => $num
+                ];
+                if ($userModel->delete($delete)) {
+                    $session->setFlashdata("success", "Data Deleted Successfully..!");
+                    return redirect()->to('tablebasic');
+                } else {
+                    $session->setFlashdata("error", "Issues Deleting the data, Please Try again After Sometime..!");
+                    return redirect()->to('tablebasic');
+                }
+            }
+        } else {
+            return redirect()->to("/");
+        }
+    }
     public function delete($num = null)
     {
         $session = session();
@@ -32,56 +224,7 @@ class adminController extends BaseController
         }
     }
 
-    public function setupdatedata()
-    {
-        // print_r($this->request->getVar());
-        $categoriesModel = new categoriesModel();
-        $session = session();
-        if (isset($this->request->getVar()['status'])) {
-            $status = 1;
-        } else {
-            $status = 0;
-        }
-        $category_id = $this->request->getVar()['category_id'];
-        $category_name = $this->request->getVar()['category_name'];
-        $category_desc = $this->request->getVar()['category_desc'];
-        $category_image = $this->request->getVar()['category_image'];
-        $data = [
-            "category_name" => $category_name,
-            "category_desc" => $category_desc,
-            "category_image" => $category_image,
-            "status"=>$status
-        ];
-        $categoriesModel->update($category_id, $data);
-        if ($categoriesModel->update($category_id, $data)) {
 
-            $session->setFlashdata("success", "<strong>Data Updated Successfully &#128522;</strong>");
-            return redirect()->to('tablebasic');
-        } else {
-            $session->setFlashdata("error", "Data cant update due to technical reason.!");
-            return redirect()->to('tablebasic');
-        }
-        // $session = session();
-        // if ($session->get('username')) {
-        //     $id = $this->request->getVar()['id'];
-        //     $email = $this->request->getVar()['email'];
-        //     $password = $this->request->getVar()['password'];
-        //     $data = [
-        //         "name" => $name,
-        //         "uname" => $email,
-        //         "pass" => $password,
-        //     ];
-
-        //     $userModel = new userModel();
-        //     if ($userModel->update($id, $data)) {
-        //         $session->setFlashdata("success", "<strong>Data Updated Successfully &#128522;</strong>");
-        //         return redirect()->to('all-data');
-        //     } else {
-        //         $session->setFlashdata("error", "Data cant update due to technical reason.!");
-        //         return redirect()->to('all-data');
-        //     }
-        // }
-    }
     // Get Data Record To Update Data 
     public function getupdatedata()
     {
@@ -93,13 +236,28 @@ class adminController extends BaseController
         return json_encode($data);
         //  }
     }
+    public function getupdateproductdata()
+    {
+        $id = $this->request->getVar();
+        $session = session();
+        //  if ($session->get('username')) {
+        $userModel = new productModel();
+        $data = $userModel->where($id)->find();
+        return json_encode($data);
+        //  }
+    }
 
 
     public function tablebasic()
     {
+        $db = db_connect();
+        $result = $db->query('SELECT product.id, product.product_name, product.product_desc, product.product_img, product.product_price ,categories.category_name,product.user_id,product.status,product.created_at FROM `product` JOIN categories ON product.category_id= categories.id');
+        $result = $result->getResultArray();
         $categoriesModel = new categoriesModel();
+        $productModel = new productModel();
+        // $products= $productModel->findAll();
         $category = $categoriesModel->findAll();
-        return view('tables-basic', ["categories" => $category]);
+        return view('tables-basic', ["categories" => $category, "products" => $result]);
     }
     public function resetpassword()
     {

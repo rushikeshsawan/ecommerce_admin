@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="light" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
 
@@ -736,228 +735,7 @@
                         </li>
                         <li class="menu-title"><i class="ri-more-fill"></i> <span data-key="t-pages">Pages</span></li>
 
-                        <!-- <li class="nav-item">
-                            <a class="nav-link menu-link" href="#sidebarAuth" data-bs-toggle="collapse" role="button"
-                                aria-expanded="false" aria-controls="sidebarAuth">
-                                <i class="bi bi-person-circle"></i> <span
-                                    data-key="t-authentication">Authentication</span>
-                            </a>
-                            <div class="collapse menu-dropdown" id="sidebarAuth">
-                                <ul class="nav nav-sm flex-column">
-                                    <li class="nav-item">
-                                        <a href="#sidebarSignIn" class="nav-link" data-bs-toggle="collapse"
-                                            role="button" aria-expanded="false" aria-controls="sidebarSignIn"
-                                            data-key="t-signin"> Sign In
-                                        </a>
-                                        <div class="collapse menu-dropdown" id="sidebarSignIn">
-                                            <ul class="nav nav-sm flex-column">
-                                                <li class="nav-item">
-                                                    <a href="auth-signin-basic.html" class="nav-link"
-                                                        data-key="t-basic"> Basic </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a href="auth-signin-basic-2.html" class="nav-link"
-                                                        data-key="t-basic-2"> Basic 2 </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a href="auth-signin-cover.html" class="nav-link"
-                                                        data-key="t-cover"> Cover </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#sidebarSignUp" class="nav-link" data-bs-toggle="collapse"
-                                            role="button" aria-expanded="false" aria-controls="sidebarSignUp"
-                                            data-key="t-signup"> Sign Up </a>
-                                        <div class="collapse menu-dropdown" id="sidebarSignUp">
-                                            <ul class="nav nav-sm flex-column">
-                                                <li class="nav-item">
-                                                    <a href="auth-signup-basic.html" class="nav-link"
-                                                        data-key="t-basic"> Basic </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a href="auth-signup-basic-2.html" class="nav-link"
-                                                        data-key="t-basic-2"> Basic 2 </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a href="auth-signup-cover.html" class="nav-link"
-                                                        data-key="t-cover"> Cover </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
 
-                                    <li class="nav-item">
-                                        <a href="#sidebarResetPass" class="nav-link" data-bs-toggle="collapse"
-                                            role="button" aria-expanded="false" aria-controls="sidebarResetPass"
-                                            data-key="t-password-reset">
-                                            Password Reset
-                                        </a>
-                                        <div class="collapse menu-dropdown" id="sidebarResetPass">
-                                            <ul class="nav nav-sm flex-column">
-                                                <li class="nav-item">
-                                                    <a href="auth-pass-reset-basic.html" class="nav-link"
-                                                        data-key="t-basic"> Basic </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a href="auth-pass-reset-basic-2.html" class="nav-link"
-                                                        data-key="t-basic-2"> Basic 2</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a href="auth-pass-reset-cover.html" class="nav-link"
-                                                        data-key="t-cover"> Cover </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-
-                                    <li class="nav-item">
-                                        <a href="#sidebarchangePass" class="nav-link" data-bs-toggle="collapse"
-                                            role="button" aria-expanded="false" aria-controls="sidebarchangePass"
-                                            data-key="t-password-create">
-                                            Password Create
-                                        </a>
-                                        <div class="collapse menu-dropdown" id="sidebarchangePass">
-                                            <ul class="nav nav-sm flex-column">
-                                                <li class="nav-item">
-                                                    <a href="auth-pass-change-basic.html" class="nav-link"
-                                                        data-key="t-basic"> Basic </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a href="auth-pass-change-basic-2.html" class="nav-link"
-                                                        data-key="t-basic-2"> Basic 2 </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a href="auth-pass-change-cover.html" class="nav-link"
-                                                        data-key="t-cover"> Cover </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-
-                                    <li class="nav-item">
-                                        <a href="#sidebarLockScreen" class="nav-link" data-bs-toggle="collapse"
-                                            role="button" aria-expanded="false" aria-controls="sidebarLockScreen"
-                                            data-key="t-lock-screen">
-                                            Lock Screen
-                                        </a>
-                                        <div class="collapse menu-dropdown" id="sidebarLockScreen">
-                                            <ul class="nav nav-sm flex-column">
-                                                <li class="nav-item">
-                                                    <a href="auth-lockscreen-basic.html" class="nav-link"
-                                                        data-key="t-basic"> Basic </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a href="auth-lockscreen-basic-2.html" class="nav-link"
-                                                        data-key="t-basic-2"> Basic 2 </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a href="auth-lockscreen-cover.html" class="nav-link"
-                                                        data-key="t-cover"> Cover </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-
-                                    <li class="nav-item">
-                                        <a href="#sidebarLogout" class="nav-link" data-bs-toggle="collapse"
-                                            role="button" aria-expanded="false" aria-controls="sidebarLogout"
-                                            data-key="t-logout"> Logout
-                                        </a>
-                                        <div class="collapse menu-dropdown" id="sidebarLogout">
-                                            <ul class="nav nav-sm flex-column">
-                                                <li class="nav-item">
-                                                    <a href="auth-logout-basic.html" class="nav-link"
-                                                        data-key="t-basic"> Basic </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a href="auth-logout-basic-2.html" class="nav-link"
-                                                        data-key="t-basic-2"> Basic 2 </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a href="auth-logout-cover.html" class="nav-link"
-                                                        data-key="t-cover"> Cover </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#sidebarSuccessMsg" class="nav-link" data-bs-toggle="collapse"
-                                            role="button" aria-expanded="false" aria-controls="sidebarSuccessMsg"
-                                            data-key="t-success-message"> Success Message
-                                        </a>
-                                        <div class="collapse menu-dropdown" id="sidebarSuccessMsg">
-                                            <ul class="nav nav-sm flex-column">
-                                                <li class="nav-item">
-                                                    <a href="auth-success-msg-basic.html" class="nav-link"
-                                                        data-key="t-basic"> Basic </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a href="auth-success-msg-basic-2.html" class="nav-link"
-                                                        data-key="t-basic-2"> Basic 2 </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a href="auth-success-msg-cover.html" class="nav-link"
-                                                        data-key="t-cover"> Cover </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#sidebarTwoStep" class="nav-link" data-bs-toggle="collapse"
-                                            role="button" aria-expanded="false" aria-controls="sidebarTwoStep"
-                                            data-key="t-two-step-verification"> Two Step Verification
-                                        </a>
-                                        <div class="collapse menu-dropdown" id="sidebarTwoStep">
-                                            <ul class="nav nav-sm flex-column">
-                                                <li class="nav-item">
-                                                    <a href="auth-twostep-basic.html" class="nav-link"
-                                                        data-key="t-basic"> Basic </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a href="auth-twostep-basic-2.html" class="nav-link"
-                                                        data-key="t-basic-2"> Basic 2</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a href="auth-twostep-cover.html" class="nav-link"
-                                                        data-key="t-cover"> Cover </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#sidebarErrors" class="nav-link" data-bs-toggle="collapse"
-                                            role="button" aria-expanded="false" aria-controls="sidebarErrors"
-                                            data-key="t-errors"> Errors
-                                        </a>
-                                        <div class="collapse menu-dropdown" id="sidebarErrors">
-                                            <ul class="nav nav-sm flex-column">
-                                                <li class="nav-item">
-                                                    <a href="auth-404-basic.html" class="nav-link"
-                                                        data-key="t-404-basic"> 404 Basic </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a href="auth-404-cover.html" class="nav-link"
-                                                        data-key="t-404-cover"> 404 Cover </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a href="auth-404-alt.html" class="nav-link" data-key="t-404-alt">
-                                                        404 Alt </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a href="auth-500.html" class="nav-link" data-key="t-500"> 500 </a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a href="auth-offline.html" class="nav-link"
-                                                        data-key="t-offline-page"> Offline Page </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li> -->
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="advance-ui-sweetalerts.html">
                                 <i class="bi bi-layers"></i> <span data-key="t-components">Alert</span>
@@ -1014,11 +792,18 @@
                         <div class="col-12">
                             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
                                 <h4 class="mb-sm-0">Basic Tables</h4>
+                                <button type="button" class="btn btn-primary text-center" data-bs-toggle="modal" data-bs-target="#addcategorymodal">
+                                    Add New Category
+                                </button>
+                                <button type="button" class="btn btn-info text-center" data-bs-toggle="modal" data-bs-target="#addproductmodal">
+                                    Add New Product
+                                </button>
 
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
                                         <li class="breadcrumb-item"><a href="javascript: void(0);">Tables</a></li>
                                         <li class="breadcrumb-item active">Basic Tables</li>
+
                                     </ol>
                                 </div>
 
@@ -1037,7 +822,7 @@
                             ?>
                                 <!-- Success Alert -->
                                 <div class="alert alert-success alert-dismissible fade show text-center" role="alert">
-                                    <strong > <?= session()->get('success') ?>  </strong> 
+                                    <strong> <?= session()->get('success') ?> </strong>
                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
                             <?php
@@ -1049,7 +834,7 @@
                             ?>
                                 <!-- Success Alert -->
                                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                    <strong> <?= session()->get('error') ?>  </strong> 
+                                    <strong> <?= session()->get('error') ?> </strong>
                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                 </div>
                             <?php
@@ -1057,7 +842,7 @@
 
                             ?>
                             <div class="card">
-                                <div class="card-header">
+                                <div class="card-header text-center">
                                     <h4 class="card-title mb-0 text-center">Categories</h4>
                                 </div><!-- end card header -->
 
@@ -1101,11 +886,21 @@
                                                         <td><?= date('jS, F Y', strtotime($category['created_at'])) ?></td>
                                                         <td><span class="badge bg-<?php echo ($category['status'] == '1') ? 'success' : 'danger' ?>"><?php echo ($category['status'] == '1') ? 'Active' : 'Inactive' ?></span></td>
                                                         <td>
-                                                            <button type="button" onclick="editdata(<?= $category['id'] ?>)" class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModalgrid">
-                                                                Edit
-                                                            </button>
-                                                            <!-- <button type="button" class="btn btn-sm btn-secondary">Edit</button> -->
-                                                            <a href="/delete/<?= $category['id'] ?>" type="button" class="btn btn-sm btn-danger">Delete</a>
+
+                                                            <div class="dropdown">
+                                                                <a href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                                                    <i class="ri-more-2-fill"></i>
+                                                                </a>
+
+                                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                                    <li><button data-bs-toggle="modal" data-bs-target="#exampleModalgrid" type="button" class="dropdown-item" onclick="editdata(<?= $category['id'] ?>)">Edit</button></li>
+
+                                                                    <li><a href="/delete/<?= $category['id'] ?>" class="dropdown-item">Delete</a></li>
+                                                                </ul>
+                                                            </div>
+
+
+                                                        
                                                         </td>
                                                     </tr>
 
@@ -1126,21 +921,195 @@
                         </div><!-- end col -->
                     </div><!-- end row -->
 
-                   
+                    <!-- Add product Table  -->
 
-                    
 
-                  
-                   
-                    
+                    <div class="card">
+                        <div class="card-header text-center">
+                            <h4 class="card-title mb-0 text-center">Products</h4>
+                        </div><!-- end card header -->
 
-                   
+                        <div class="card-body">
+                            <!-- <p class="text-muted mb-4 text-center">Use .<code>table-striped-columns</code> to add
+                                        zebra-striping to any table column.</p> -->
+                            <div class="table-responsive table-card">
 
-                    
+                                <table id="categorytaable" class="table align-middle table-nowrap table-hover mb-0">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th scope="col" style="width: 46px;">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="" id="cardtableCheck">
+                                                    <label class="form-check-label" for="cardtableCheck"></label>
+                                                </div>
+                                            </th>
+                                            <th scope="col">ID</th>
+                                            <th scope="col">Name</th>
+                                            <th scope="col">Description</th>
+                                            <th scope="col">Price</th>
+                                            <th scope="col">Category</th>
+                                            <th scope="col">Date</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col" style="width: 150px;">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
 
-                  
+                                        <?php
 
-              
+                                        foreach ($products as $product) {
+                                        ?>
+                                            <tr>
+                                                <td>
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="" id="cardtableCheck01">
+                                                        <label class="form-check-label" for="cardtableCheck01"></label>
+                                                    </div>
+                                                </td>
+                                                <td><a href="#" class="fw-medium">#<?= $product['id'] ?></a></td>
+                                                <td><?= $product['product_name'] ?></td>
+                                                <td><?= $product['product_desc'] ?></td>
+                                                <td><?= $product['product_price'] ?></td>
+                                                <td><?= $product['category_name'] ?></td>
+                                                <td><?= date('jS, F Y', strtotime($product['created_at'])) ?></td>
+                                                <td><span class="badge bg-<?php echo ($product['status'] == '1') ? 'success' : 'danger' ?>"><?php echo ($product['status'] == '1') ? 'Active' : 'Inactive' ?></span></td>
+                                                <td>
+                                                    <div class="dropdown">
+                                                        <a href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                                            <i class="ri-more-2-fill"></i>
+                                                        </a>
+
+                                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                            <li><button data-bs-toggle="modal" data-bs-target="#editproductmodal" type="button" class="dropdown-item" onclick="editproductdata(<?= $product['id'] ?>)">Edit</button></li>
+
+                                                            <li><a href="/deleteProduct/<?= $product['id'] ?>" class="dropdown-item" href="#">Delete</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+
+                                            </tr>
+
+                                        <?php
+
+                                        }
+                                        ?>
+
+
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div><!-- end card-body -->
+
+                    </div><!-- end card -->
+
+
+
+
+
+                    <!-- Add product Table End  -->
+
+
+                    <?php
+
+                    include "addcategorymodal.php";
+                    include "editproductmodal.php";
+                    // include "addnewproductmodal.php";
+
+                    ?>
+
+                    <!-- Add Product Modal -->
+
+                    <div class="modal fade" id="addproductmodal" tabindex="-1" aria-labelledby="exampleModalgridLabel" aria-modal="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalgridLabel">Add Product</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form method="post" action="/addProduct">
+                                        <div class="row g-3">
+
+                                            <div class="col-xxl-12">
+                                                <div>
+                                                    <label for="lastName" class="form-label">Product Name</label>
+                                                    <input name="productname" type="text" class="form-control" id="lastName" placeholder="Enter Product Name" required>
+                                                </div>
+                                            </div><!--end col-->
+                                            <div class="col-xxl-12">
+                                                <div>
+                                                    <label for="lastName" class="form-label">Product Image Link</label>
+                                                    <input type="url" name="productimg" class="form-control" id="lastName" placeholder="Enter Product Image Link" required>
+                                                </div>
+                                                <div class="col-xxl-12">
+                                                    <div>
+                                                        <label for="lastName" class="form-label">Product Price</label>
+                                                        <input type="number" name="productprice" class="form-control" id="lastName" placeholder="Enter Product Price" required>
+                                                    </div>
+                                                </div><!--end col--><br>
+                                                <div class="col-xxl-12">
+                                                    <!-- Select -->
+                                                    <div class="input-group">
+                                                        <label class="input-group-text" for="inputGroupSelect01">Choose Categories </label>
+                                                        <select name="catid" class="form-select" id="inputGroupSelect01" required>
+                                                            <option value="">Choose...</option>
+                                                            <?php
+                                                            foreach ($categories as $category) {
+                                                            ?>
+                                                                <option value="<?= $category['id'] ?>"><?= $category['category_name']; ?></option>
+
+                                                            <?php
+
+
+                                                            }
+                                                            ?>
+
+                                                        </select>
+                                                    </div>
+                                                </div><!--end col-->
+
+                                                <div class="col-xxl-12">
+                                                    <div>
+                                                        <label for="emailInput" class="form-label">Product Description</label>
+                                                        <textarea name="productdesc" class="form-control" placeholder="Enter Product Description" required> </textarea>
+                                                    </div>
+                                                </div><!--end col-->
+                                                <div class="col-xxl-12">
+                                                    <div class="text-center"> <label for="passwordInput" class="form-label">Active/Inactive</label><br>
+
+                                                        <input class="form-check-input text-center" name="status" type="checkbox" role="switch" id="editstatus">
+                                                    </div>
+                                                </div>
+
+
+
+
+
+                                                <div class="col-lg-12">
+                                                    <div class="hstack gap-2 justify-content-end">
+                                                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                                    </div>
+                                                </div><!--end col-->
+                                            </div><!--end row-->
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Add Product Modal End -->
+
+
+
+
+
+
+
+
+
                 </div>
                 <!-- container-fluid -->
             </div>
@@ -1192,7 +1161,6 @@
     <!-- Theme Settings -->
 
     <!-- Edit Modal -->
-    <!-- Grids in modals -->
 
     <div class="modal fade" id="exampleModalgrid" tabindex="-1" aria-labelledby="exampleModalgridLabel" aria-modal="true">
         <div class="modal-dialog">
@@ -1228,7 +1196,7 @@
                             <div class="col-xxl-6">
                                 <div class="text-center"> <label for="passwordInput" class="form-label">Active/Inactive</label><br>
 
-                                    <input class="form-check-input text-center" name="status" type="checkbox" role="switch" id="editstatus">
+                                    <input class="form-check-input text-center" name="status" type="checkbox" role="switch" id="edittstatus">
                                 </div>
                             </div>
                             <div class="col-lg-12">
@@ -1237,58 +1205,105 @@
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
                             </div><!--end col-->
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
-                            <!--End of  Edit Modal -->
+    <!--End of  Edit Modal -->
 
 
-                            <!-- JAVASCRIPT -->
-                            <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-                            <script src="assets/libs/simplebar/simplebar.min.js"></script>
-                            <script src="assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
-                            <script src="assets/js/plugins.js"></script>
-
-                            <!-- prismjs plugin -->
-                            <script src="assets/libs/prismjs/prism.js"></script>
-
-                            <!-- App js -->
-                            <script src="assets/js/app.js"></script>
-                            <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
-                            <script src="//cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>
-                            <script>
-                                let table = new DataTable('#categorytable');
-
-                                function editdata(edit) {
-                                    $.post("/getupdatedata", {
-                                            id: edit
-                                        },
-                                        function(data, status) {
-                                            console.log(data);
-                                            let dataa = jQuery.parseJSON(data);
-                                            // console.log(dataa['id']);
-                                            // console.log(dataa[0]['id']);
-                                            // console.log(dataa[0].id);
-                                            // console.log(dataa);
-                                            $("#editid").val(dataa[0]['id']);
-                                            $("#editname").val(dataa[0]['category_name']);
-                                            $("#editdesc").val(dataa[0]['category_desc']);
-                                            $("#editimage").val(dataa[0]['category_img']);
-                                            if (dataa[0]['status'] == 1) {
-
-                                                $('#editstatus').attr('checked', 'checked');
-                                            } else {
-                                                $('#editstatus').removeAttr('checked');
-
-                                            }
-                                            // $("#edituname").val($data[0]['uname']);
-                                            // $("#editpass").val($data[0]['pass']);
-
-                                        });
+    <!-- Edit Product  -->
 
 
-                                }
-                            </script>
+
+    <!--End of Edit Product  -->
+
+
+    <!-- JAVASCRIPT -->
+    <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
+    <script src="assets/js/plugins.js"></script>
+
+    <!-- prismjs plugin -->
+    <script src="assets/libs/prismjs/prism.js"></script>
+
+    <!-- App js -->
+    <script src="assets/js/app.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script src="//cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>
+    <script>
+        let table = new DataTable('#categorytable');
+        let tablee = new DataTable('#categorytaable');
+
+        function editdata(edit) {
+            $.post("/getupdatedata", {
+                    id: edit
+                },
+                function(data, status) {
+                    console.log(data);
+                    let dataa = jQuery.parseJSON(data);
+                    // console.log(dataa['id']);
+                    // console.log(dataa[0]['id']);
+                    // console.log(dataa[0].id);
+                    // console.log(dataa);
+                    $("#editid").val(dataa[0]['id']);
+                    $("#editname").val(dataa[0]['category_name']);
+                    $("#editdesc").val(dataa[0]['category_desc']);
+                    $("#editimage").val(dataa[0]['category_img']);
+                    if (dataa[0]['status'] == 1) {
+
+                        $('#edittstatus').attr('checked', 'checked');
+                    } else {
+                        $('#edittstatus').removeAttr('checked');
+
+                    }
+                    // $("#edituname").val($data[0]['uname']);
+                    // $("#editpass").val($data[0]['pass']);
+
+                });
+
+
+        }
+
+        function editproductdata(edit) {
+            $.post("/getupdateproductdata", {
+                    id: edit
+                },
+                function(data, status) {
+                    console.log(data);
+                    let dataa = jQuery.parseJSON(data);
+                    // console.log(dataa['id']);
+                    // console.log(dataa[0]['id']);
+                    // console.log(dataa[0].id);
+                    // console.log(dataa);
+                    $("#productid").val(dataa[0]['id']);
+                    console.log(dataa[0]['category_id']);
+                    $("#productcatid").val(dataa[0]['category_id']);
+                    $("#productname").val(dataa[0]['product_name']);
+                    $("#productdesc").val(dataa[0]['product_desc']);
+                    $("#productimg").val(dataa[0]['product_img']);
+                    $("#productprice").val(dataa[0]['product_price']);
+                    if (dataa[0]['status'] == 1) {
+
+                        $('#productstatus').attr('checked', 'checked');
+                    } else {
+                        $('#productstatus').removeAttr('checked');
+
+                    }
+                    // $("#edituname").val($data[0]['uname']);
+                    // $("#editpass").val($data[0]['pass']);
+
+                });
+
+
+        }
+    </script>
 </body>
 
 

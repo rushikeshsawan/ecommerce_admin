@@ -35,11 +35,16 @@ $routes->get('/', 'adminController::login');
 $routes->get('/logout', 'adminController::logout');
 $routes->get('/tablebasic', 'adminController::tablebasic');
 $routes->post('/getupdatedata', 'adminController::getupdatedata');
+$routes->post('/getupdateproductdata', 'adminController::getupdateproductdata');
 $routes->post('/resetpassword','adminController::resetpassword');
 $routes->match(['get','post'],'/forgetpassword', 'adminController::forgetpassword');
 $routes->match(['get','post'],'/register-user', 'adminController::signup');
 $routes->post('/update-data', 'adminController::setupdatedata');
 $routes->get('/delete/(:num)', 'adminController::delete/$1');
+$routes->get('/deleteProduct/(:num)', 'adminController::deleteProduct/$1');
+$routes->post('/addCategory','adminController::addCategory');
+$routes->post('/addProduct','adminController::addProduct');
+$routes->post('/editProduct','adminController::editProduct');
 
 
 /*
