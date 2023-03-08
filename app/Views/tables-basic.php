@@ -1,3 +1,16 @@
+<?php
+
+// print_r($tablecat);
+// foreach($tablecat as $cattable){
+//     echo $cattable['TABLES'];
+//     echo "<br>";
+// }
+// die();
+
+?>
+
+
+
 <!doctype html>
 <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="light" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
 
@@ -570,7 +583,7 @@
                                 <a class="dropdown-item" href="pages-profile.html"><i class="mdi mdi-wallet text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Balance : <b>$8451.36</b></span></a>
                                 <a class="dropdown-item" href="pages-profile-settings.html"><span class="badge bg-success-subtle text-success mt-1 float-end">New</span><i class="mdi mdi-cog-outline text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Settings</span></a>
                                 <a class="dropdown-item" href="auth-lockscreen-basic.html"><i class="mdi mdi-lock text-muted fs-16 align-middle me-1"></i> <span class="align-middle">Lock screen</span></a>
-                                <a class="dropdown-item" href="login.html"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout">Logout</span></a>
+                                <a class="dropdown-item" href="/logout"><i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span class="align-middle" data-key="t-logout">Logout</span></a>
                             </div>
                         </div>
                     </div>
@@ -726,13 +739,29 @@
 
                         <li class="menu-title"><span data-key="t-menu">Menu</span></li>
                         <li class="nav-item">
-                            <a href="index.html" class="nav-link menu-link"> <i class="bi bi-speedometer2"></i> <span data-key="t-dashboard">Dashboard</span> </a>
+                            <a href="/homepage" class="nav-link menu-link"> <i class="bi bi-speedometer2"></i> <span data-key="t-dashboard">Dashboard</span> </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link menu-link" href="tables-basic.html">
+                            <a class="nav-link menu-link" href="tablebasic">
                                 <i class="bi bi-hdd-stack"></i> <span data-key="t-widgets">Table</span>
                             </a>
                         </li>
+                        <?php
+
+                        foreach ($tablecat as $cattable) {
+                        ?>
+                            <li class="nav-item">
+                                <a class="nav-link menu-link" href="/gettablecat/<?= $cattable['TABLES'] ?>">
+                                    <i class="bi bi-hdd-stack"></i> <span data-key="t-widgets"><?= $cattable['TABLES'] ?></span>
+                                </a>
+                            </li>
+                        <?php
+                            // echo $cattable['TABLES'];
+                            // echo "<br>";
+                        }
+
+
+                        ?>
                         <li class="menu-title"><i class="ri-more-fill"></i> <span data-key="t-pages">Pages</span></li>
 
 
@@ -870,8 +899,9 @@
                                             </thead>
                                             <tbody>
                                                 <?php
-
+                                                $i = 0;
                                                 foreach ($categories as $category) {
+                                                    $i++;
                                                 ?>
                                                     <tr>
                                                         <td>
@@ -880,7 +910,7 @@
                                                                 <label class="form-check-label" for="cardtableCheck01"></label>
                                                             </div>
                                                         </td>
-                                                        <td><a href="#" class="fw-medium">#<?= $category['id'] ?></a></td>
+                                                        <td><a href="#" class="fw-medium">#<?= $i ?></a></td>
                                                         <td><?= $category['category_name'] ?></td>
                                                         <td><?= $category['category_desc'] ?></td>
                                                         <td><?= date('jS, F Y', strtotime($category['created_at'])) ?></td>
@@ -900,7 +930,7 @@
                                                             </div>
 
 
-                                                        
+
                                                         </td>
                                                     </tr>
 
@@ -956,8 +986,9 @@
                                     <tbody>
 
                                         <?php
-
+                                        $i = 0;
                                         foreach ($products as $product) {
+                                            $i++;
                                         ?>
                                             <tr>
                                                 <td>
@@ -966,7 +997,7 @@
                                                         <label class="form-check-label" for="cardtableCheck01"></label>
                                                     </div>
                                                 </td>
-                                                <td><a href="#" class="fw-medium">#<?= $product['id'] ?></a></td>
+                                                <td><a href="#" class="fw-medium">#<?= $i ?></a></td>
                                                 <td><?= $product['product_name'] ?></td>
                                                 <td><?= $product['product_desc'] ?></td>
                                                 <td><?= $product['product_price'] ?></td>

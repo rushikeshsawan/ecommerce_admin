@@ -848,7 +848,7 @@
 
                         <li class="menu-title"><span data-key="t-menu">Menu</span></li>
                         <li class="nav-item">
-                            <a href="index.html" class="nav-link menu-link"> <i class="bi bi-speedometer2"></i> <span
+                            <a href="/homepage" class="nav-link menu-link"> <i class="bi bi-speedometer2"></i> <span
                                     data-key="t-dashboard">Dashboard</span> </a>
                         </li>
                         <li class="nav-item">

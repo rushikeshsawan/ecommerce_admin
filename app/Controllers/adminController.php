@@ -8,6 +8,11 @@ use App\Models\productModel;
 
 class adminController extends BaseController
 {
+    public $db;
+    public function __construct()
+    {
+        $this->db = db_connect();
+    }
 
     public function setupdatedata()
     {
@@ -247,17 +252,67 @@ class adminController extends BaseController
         //  }
     }
 
+    function getIndexedArray($array)
+    {
+        $arrayTemp = array();
+        for ($i = 0; $i < count($array); $i++) {
+            $keys = array_keys($array[$i]);
+            $innerArrayTemp = array();
+            for ($j = 0; $j < count($keys); $j++) {
+
+                $innerArrayTemp[$j] = $array[$i][$keys[$j]];
+            }
+            array_push($arrayTemp, $innerArrayTemp);
+        }
+        return $arrayTemp;
+    }
+
+
+
+    public function gettablecat($num = null)
+    {
+        $res = $this->db->query("SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{$num}'");
+        $res = $res->getResultArray();
+        $res2 = $this->db->query("SELECT * FROM {$num}");
+        $res2 = $res2->getResultArray();
+        $adminController = new adminController();
+        $finalres = $adminController->getIndexedArray($res2);
+        // print_r($finalres);
+        // echo count($finalres[1]);
+        // foreach ($finalres as $finalres) {
+        //     for ($i = 0; $i < count($finalres); $i++) {
+        //         echo $finalres[$i];
+        //         echo "<br>";
+        //     }
+        //     echo "------------------------------<br>";
+        // }
+        // die();
+        return view('tablecat', ['tablehead' => $res, 'finalres' => $finalres]);
+        // foreach($res as $res){
+        //     echo $res['COLUMN_NAME'];
+        //     echo "<br>";
+        // }
+        // print_r($res);
+        // echo $num;
+
+        die();
+    }
+
 
     public function tablebasic()
     {
-        $db = db_connect();
-        $result = $db->query('SELECT product.id, product.product_name, product.product_desc, product.product_img, product.product_price ,categories.category_name,product.user_id,product.status,product.created_at FROM `product` JOIN categories ON product.category_id= categories.id');
+
+
+        // $db = db_connect();
+        $result = $this->db->query('SELECT product.id, product.product_name, product.product_desc, product.product_img, product.product_price ,categories.category_name,product.user_id,product.status,product.created_at FROM `product` JOIN categories ON product.category_id= categories.id');
         $result = $result->getResultArray();
         $categoriesModel = new categoriesModel();
         $productModel = new productModel();
         // $products= $productModel->findAll();
         $category = $categoriesModel->findAll();
-        return view('tables-basic', ["categories" => $category, "products" => $result]);
+        $res = $this->db->query("SELECT TABLE_NAME AS 'TABLES' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='admin_panel' AND TABLE_NAME LIKE '%_product'");
+        $res = $res->getResultArray();
+        return view('tables-basic', ["categories" => $category, "products" => $result, 'tablecat' => $res]);
     }
     public function resetpassword()
     {
@@ -383,16 +438,19 @@ class adminController extends BaseController
     public function signup()
     {
         if ($this->request->getMethod() == 'post') {
+
             $adminModel = new adminModel();
             $uname = $this->request->getVar()['uname'];
             $email = $this->request->getVar()['email'];
             $password = md5($this->request->getVar()['password']);
             $isValid = $this->validate([
                 'email' => 'required|valid_email|is_unique[admin_login.email]',
-                'uname' => 'required',
-                'password' => 'required'
+                'uname' => 'required|min_length[8]',
+                'password' => 'required|min_length[8]'
             ], [
-                'email' => ['is_unique' => "email must be unique"]
+                'email' => ['is_unique' => "Following email is Already Registered, Please Try other one.", "required" => "Email cannot be Empty", "valid_email" => "Please Enter Valid Email"],
+                'uname' => ['required' => 'Username is Required', 'min_length' => 'Username Minimum length should be 8 characters'],
+                'password' => ['required' => 'Password is Required', 'min_length' => 'Password Minimum Length should be 8 characters']
             ]);
             if ($isValid) {
 
@@ -406,17 +464,22 @@ class adminController extends BaseController
                     return redirect()->to('login');
                 }
             } else {
-                print_r($error = $this->validator->getErrors());
+                $error = $this->validator->getErrors();
                 // var_dump($error);
                 // die();
-                var_dump($this->validator->getError('uname'));
-                var_dump($this->validator->getError('password'));
-                return view('register-user');
+                // var_dump($this->validator->getError('uname'));
+                // var_dump($this->validator->getError('password'));
+                return view('register-user', $error);
                 // die();
             }
         } else {
 
             return view('register-user');
         }
+    }
+
+
+    public function getalltables()
+    {
     }
 }

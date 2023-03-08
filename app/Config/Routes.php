@@ -45,6 +45,8 @@ $routes->get('/deleteProduct/(:num)', 'adminController::deleteProduct/$1');
 $routes->post('/addCategory','adminController::addCategory');
 $routes->post('/addProduct','adminController::addProduct');
 $routes->post('/editProduct','adminController::editProduct');
+$routes->get('/gettablecat/(:any)','adminController::gettablecat/$1');
+$routes->get('/gettablecat','adminController::homepage');
 
 
 /*
