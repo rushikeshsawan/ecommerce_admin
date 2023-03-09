@@ -29,25 +29,32 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+
+
+// Routes for product manipulation
+$routes->post('/getupdateproductdata', 'productController::getupdateproductdata');
+$routes->get('/deleteProduct/(:num)', 'productController::deleteProduct/$1');
+$routes->post('/addProduct','productController::addProduct');
+$routes->post('/editProduct','productController::editProduct');
+
+
+// Routes for Category manipulation
+$routes->post('/getupdatedata', 'categoryController::getupdatecategorydata');
+$routes->post('/update-data', 'categoryController::setupdatecategorydata');
+$routes->get('/delete/(:num)', 'categoryController::deletecategory/$1');
+$routes->post('/addCategory','categoryController::addCategory');
+
+
 $routes->match(['get','post'],'/login', 'adminController::login');
 $routes->get('/homepage', 'adminController::homepage');
 $routes->get('/', 'adminController::login');
 $routes->get('/logout', 'adminController::logout');
 $routes->get('/tablebasic', 'adminController::tablebasic');
-$routes->post('/getupdatedata', 'adminController::getupdatedata');
-$routes->post('/getupdateproductdata', 'adminController::getupdateproductdata');
 $routes->post('/resetpassword','adminController::resetpassword');
 $routes->match(['get','post'],'/forgetpassword', 'adminController::forgetpassword');
 $routes->match(['get','post'],'/register-user', 'adminController::signup');
-$routes->post('/update-data', 'adminController::setupdatedata');
-$routes->get('/delete/(:num)', 'adminController::delete/$1');
-$routes->get('/deleteProduct/(:num)', 'adminController::deleteProduct/$1');
-$routes->post('/addCategory','adminController::addCategory');
-$routes->post('/addProduct','adminController::addProduct');
-$routes->post('/editProduct','adminController::editProduct');
 $routes->get('/gettablecat/(:any)','adminController::gettablecat/$1');
 $routes->get('/gettablecat','adminController::homepage');
-
 
 /*
  * --------------------------------------------------------------------
