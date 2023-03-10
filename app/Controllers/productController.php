@@ -20,7 +20,6 @@ class productController extends BaseController
     {
         $productModel = new productModel();
         $session = session();
-        if ($session->get('username')) {
             if (isset($this->request->getVar()['status'])) {
                 $status = 1;
             } else {
@@ -62,15 +61,12 @@ class productController extends BaseController
                 $session->setFlashdata("error", "Data cant update due to Invalid Data.!");
                 return redirect()->to('tablebasic');
             }
-        } else {
-            return redirect()->to("/");
-        }
+       
     }
 
     public function addProduct()
     {
         $session = session();
-        if ($session->get('username')) {
 
             $val = [
                 'productname' => 'required',
@@ -113,9 +109,7 @@ class productController extends BaseController
                 $session->setFlashdata("error", "Product cannot be inserted due to Invalid data.!");
                 return redirect()->to('tablebasic');
             }
-        } else {
-            return redirect()->to("/");
-        }
+        
     }
 
 
@@ -124,7 +118,6 @@ class productController extends BaseController
     public function deleteProduct($num = null)
     {
         $session = session();
-        if ($session->get('username')) {
 
             if ($num != null) {
                 $userModel = new productModel();
@@ -139,9 +132,7 @@ class productController extends BaseController
                     return redirect()->to('tablebasic');
                 }
             }
-        } else {
-            return redirect()->to("/");
-        }
+       
     }
 
 
@@ -151,10 +142,9 @@ class productController extends BaseController
     {
         $id = $this->request->getVar();
         $session = session();
-        if ($session->get('username')) {
             $userModel = new productModel();
             $data = $userModel->where($id)->find();
             return json_encode($data);
-        }
+        
     }
 }

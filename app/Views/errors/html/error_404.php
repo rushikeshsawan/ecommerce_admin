@@ -1,3 +1,8 @@
+<?php
+
+header("Location: /login");
+die();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -21,9 +21,6 @@ class adminController extends BaseController
 
         $adminModel = new adminModel();
         $session = session();
-        if ($session->get('username')) {
-            return redirect()->to('/homepage');
-        }
         if ($this->request->getMethod() == "post") {
             $data = [
                 'email' => 'required|valid_email',
@@ -71,8 +68,6 @@ class adminController extends BaseController
     public function gettablecat($table = null)
     {
         $session = session();
-        if ($session->get('username')) {
-
             $res = $this->db->query("SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{$table}'");
             $res = $res->getResultArray();
             $res2 = $this->db->query("SELECT * FROM {$table}");
@@ -81,27 +76,22 @@ class adminController extends BaseController
             $finalres = $adminController->getIndexedArray($res2);
 
             return view('tablecat', ['tablehead' => $res, 'finalres' => $finalres]);
-        } else {
-            return redirect()->to('/');
-        }
+        
     }
 
     // all table view of category and product in dashboard tablebasic route 
     public function tablebasic()
     {
         $session = session();
-        if ($session->get('username')) {
-        $result = $this->db->query('SELECT product.id, product.product_name, product.product_desc, product.product_img, product.product_price ,categories.category_name,product.user_id,product.status,product.created_at FROM `product` JOIN categories ON product.category_id= categories.id');
-        $result = $result->getResultArray();
-        $categoriesModel = new categoriesModel();
-        $productModel = new productModel();
-        $category = $categoriesModel->findAll();
-        $res = $this->db->query("SELECT TABLE_NAME AS 'TABLES' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='admin_panel' AND TABLE_NAME LIKE '%_product'");
-        $res = $res->getResultArray();
-        return view('tables-basic', ["categories" => $category, "products" => $result, 'tablecat' => $res]);
-    } else {
-        return redirect()->to('/');
-    }
+            $result = $this->db->query('SELECT product.id, product.product_name, product.product_desc, product.product_img, product.product_price ,categories.category_name,product.user_id,product.status,product.created_at FROM `product` JOIN categories ON product.category_id= categories.id');
+            $result = $result->getResultArray();
+            $categoriesModel = new categoriesModel();
+            $productModel = new productModel();
+            $category = $categoriesModel->findAll();
+            $res = $this->db->query("SELECT TABLE_NAME AS 'TABLES' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='admin_panel' AND TABLE_NAME LIKE '%_product'");
+            $res = $res->getResultArray();
+            return view('tables-basic', ["categories" => $category, "products" => $result, 'tablecat' => $res]);
+        
     }
 
 
@@ -203,11 +193,9 @@ class adminController extends BaseController
     public function homepage()
     {
         $session = session();
-        if (!$session->get('username')) {
-            return redirect()->to('/login');
-        } else {
+       
             return view('index');
-        }
+    
     }
 
 

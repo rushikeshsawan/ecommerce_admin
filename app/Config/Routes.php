@@ -32,29 +32,34 @@ $routes->set404Override();
 
 
 // Routes for product manipulation
-$routes->post('/getupdateproductdata', 'productController::getupdateproductdata');
-$routes->get('/deleteProduct/(:num)', 'productController::deleteProduct/$1');
-$routes->post('/addProduct','productController::addProduct');
-$routes->post('/editProduct','productController::editProduct');
+$routes->get('/deleteProduct/(:num)', 'productController::deleteProduct/$1', ['filter' => 'auth']);
+
+$routes->post('/getupdateproductdata', 'productController::getupdateproductdata', ['filter' => 'auth']);
+$routes->post('/addProduct', 'productController::addProduct', ['filter' => 'auth']);
+$routes->post('/editProduct', 'productController::editProduct', ['filter' => 'auth']);
 
 
 // Routes for Category manipulation
-$routes->post('/getupdatedata', 'categoryController::getupdatecategorydata');
-$routes->post('/update-data', 'categoryController::setupdatecategorydata');
-$routes->get('/delete/(:num)', 'categoryController::deletecategory/$1');
-$routes->post('/addCategory','categoryController::addCategory');
+$routes->get('/delete/(:num)', 'categoryController::deletecategory/$1', ['filter' => 'auth']);
+
+$routes->post('/getupdatedata', 'categoryController::getupdatecategorydata', ['filter' => 'auth']);
+$routes->post('/update-data', 'categoryController::setupdatecategorydata', ['filter' => 'auth']);
+$routes->post('/addCategory', 'categoryController::addCategory', ['filter' => 'auth']);
 
 
-$routes->match(['get','post'],'/login', 'adminController::login');
-$routes->get('/homepage', 'adminController::homepage');
-$routes->get('/', 'adminController::login');
-$routes->get('/logout', 'adminController::logout');
-$routes->get('/tablebasic', 'adminController::tablebasic');
-$routes->post('/resetpassword','adminController::resetpassword');
-$routes->match(['get','post'],'/forgetpassword', 'adminController::forgetpassword');
-$routes->match(['get','post'],'/register-user', 'adminController::signup');
-$routes->get('/gettablecat/(:any)','adminController::gettablecat/$1');
-$routes->get('/gettablecat','adminController::homepage');
+// Routes for Admin Login Manipulation 
+$routes->get('/homepage', 'adminController::homepage', ['filter' => 'auth']);
+$routes->get('/', 'adminController::login', ['filter' => 'noauth']);
+$routes->get('/logout', 'adminController::logout', ['filter' => 'auth']);
+$routes->get('/tablebasic', 'adminController::tablebasic', ['filter' => 'auth']);
+$routes->get('/gettablecat/(:any)', 'adminController::gettablecat/$1', ['filter' => 'auth']);
+$routes->get('/gettablecat', 'adminController::homepage', ['filter' => 'auth']);
+
+$routes->post('/resetpassword', 'adminController::resetpassword', ['filter' => 'noauth']);
+
+$routes->match(['get', 'post'], '/login', 'adminController::login', ['filter' => 'noauth']);
+$routes->match(['get', 'post'], '/forgetpassword', 'adminController::forgetpassword', ['filter' => 'noauth']);
+$routes->match(['get', 'post'], '/register-user', 'adminController::signup', ['filter' => 'noauth']);
 
 /*
  * --------------------------------------------------------------------

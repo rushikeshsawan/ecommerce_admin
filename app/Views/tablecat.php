@@ -65,9 +65,9 @@
     <script>
         var myTable = document.querySelector("#catdataa");
         var dataTable = new DataTable("#catdataa", {
-	searchable: true,
-	fixedHeight: true,
-});
+            searchable: true,
+            fixedHeight: true,
+        });
     </script>
 </body>
 

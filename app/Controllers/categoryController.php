@@ -2,9 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Models\adminModel;
 use App\Models\categoriesModel;
-use App\Models\productModel;
 
 class categoryController extends BaseController
 {
@@ -19,7 +17,6 @@ class categoryController extends BaseController
         // print_r($this->request->getVar());
         $categoriesModel = new categoriesModel();
         $session = session();
-        if ($session->get('username')) {
             if (isset($this->request->getVar()['status'])) {
                 $status = 1;
             } else {
@@ -55,9 +52,7 @@ class categoryController extends BaseController
                 $session->setFlashdata("error", "Data cant update due to Invalid data.!");
                 return redirect()->to('tablebasic');
             }
-        } else {
-            return redirect()->to('/');
-        }
+      
     }
 
 
@@ -65,7 +60,6 @@ class categoryController extends BaseController
     public function addCategory()
     {
         $session = session();
-        if ($session->get('username')) {
             $categoriesModel = new categoriesModel();
 
             $val = [
@@ -104,16 +98,14 @@ class categoryController extends BaseController
                 $session->setFlashdata("error", "Data cannot be inserted due to Invalid data.!");
                 return redirect()->to('tablebasic');
             }
-        } else {
-            return redirect()->to("/");
-        }
+       
     }
 
 
     public function deletecategory($num = null)
     {
         $session = session();
-        if ($session->get('username')) {
+
             if ($num != null) {
                 $userModel = new categoriesModel();
                 $delete = [
@@ -127,9 +119,7 @@ class categoryController extends BaseController
                     return redirect()->to('tablebasic');
                 }
             }
-        } else {
-            return redirect()->to("/");
-        }
+       
     }
 
 
@@ -137,11 +127,10 @@ class categoryController extends BaseController
     public function getupdatecategorydata()
     {
         $id = $this->request->getVar();
-        $session = session();
-         if ($session->get('username')) {
+
         $userModel = new categoriesModel();
         $data = $userModel->where($id)->find();
         return json_encode($data);
-         }
+         
     }
 }
