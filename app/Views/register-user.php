@@ -62,6 +62,7 @@
                                         <div class="input-group">
                                             <span class="input-group-text" id="basic-addon1"><i class="ri-mail-line"></i></span>
                                             <input type="email" name="email" class="form-control" id="useremail" placeholder="Enter email address" required>
+                                            <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" />
                                         </div>
                                         <div class="invalid-feedback">
                                             Please enter email

@@ -74,6 +74,8 @@
                                     <form action="<?php echo base_url() ?>resetpassword" method="post">
                                         <div class="mb-4">
                                             <label class="form-label">OTP</label>
+                                            <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" />
+
                                             <input type="number" value="<?= set_value('otp') ?>" name="otp" class="form-control" id="email" placeholder="Enter OTP" required>
                                             <div class="text-danger"><?php if (isset($validation['otp'])) {
                                                                             echo ($validation['otp']);
@@ -103,6 +105,8 @@
                         <form action="<?php echo base_url() ?>forgetpassword" method="post">
                             <div class="mb-4">
                                 <label class="form-label">Email</label>
+                                <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" />
+
                                 <input value="<?= set_value("email") ?>" type="email" name="email" class="form-control" id="email" placeholder="Enter Email" required="">
                             </div>
                             <?php

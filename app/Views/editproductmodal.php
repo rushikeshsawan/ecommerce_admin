@@ -18,6 +18,8 @@
                                <div>
                                    <label for="lastName" class="form-label">Product Name</label>
                                    <input name="productname" type="text" class="form-control" id="productname" placeholder="Enter Category Name" required>
+                                   <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" />
+
                                    <input name="productid" type="hidden" class="form-control" id="productid" placeholder="Enter Category Name" required>
                                </div>
                            </div><!--end col-->

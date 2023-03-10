@@ -17,6 +17,8 @@
                            <div class="col-xxl-12">
                                <div>
                                    <label for="lastName" class="form-label">Category Name</label>
+                                   <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" />
+
                                    <input name="catname" type="text" class="form-control" id="lastName" placeholder="Enter Category Name" required>
                                </div>
                            </div><!--end col-->

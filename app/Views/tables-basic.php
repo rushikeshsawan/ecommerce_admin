@@ -1066,6 +1066,8 @@
                                             <div class="col-xxl-12">
                                                 <div>
                                                     <label for="lastName" class="form-label">Product Name</label>
+                                                    <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" />
+
                                                     <input name="productname" type="text" class="form-control" id="lastName" placeholder="Enter Product Name" required>
                                                 </div>
                                             </div><!--end col-->
@@ -1209,6 +1211,8 @@
                                 <div>
                                     <label for="emailInput" class="form-label">Category Name</label>
                                     <input type="hidden" required name="category_id" class="form-control" id="editid">
+                                    <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" />
+
                                     <input type="text" required name="category_name" class="form-control" id="editname" placeholder="Enter category name">
                                 </div>
                             </div><!--end col-->

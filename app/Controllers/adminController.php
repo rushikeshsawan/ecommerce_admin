@@ -195,7 +195,7 @@ class adminController extends BaseController
         $session = session();
        
             return view('index');
-    
+        
     }
 
 

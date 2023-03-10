@@ -56,6 +56,8 @@
                                     <div class="mb-3">
                                         <label for="username" class="form-label">Email</label>
                                         <div class="input-group">
+                                            <input type="hidden" name="<?= csrf_token() ?>" value="<?= csrf_hash() ?>" />
+
                                             <span class="input-group-text" id="basic-addon1"><i class="ri-user-3-line"></i></span>
                                             <input value="<?= set_value("email") ?>" type="text" name="email" class="form-control" id="username" placeholder="Enter Email">
                                         </div>
