@@ -24,7 +24,7 @@ class adminController extends BaseController
         if ($this->request->getMethod() == "post") {
             $data = [
                 'email' => 'required|valid_email',
-                'password' => 'required'
+                'password' => 'required|min_length[8]'
             ];
             if ($this->validate($data)) {
 

@@ -63,6 +63,45 @@
                                </div>
                            </div><!--end col-->
                            <div class="col-xxl-12">
+                               <label for="emailInput" class="form-label">Product Ratings</label>
+                               <div>
+                                   <div id="div" class="rating">
+
+                                       <label>
+                                           <input type="radio" id="ratingstar1" name="stars" value="1" required/>
+                                           <span class="icon">★</span>
+                                       </label>
+                                       <label>
+                                           <input type="radio" id="ratingstar2" name="stars" value="2" />
+                                           <span class="icon">★</span>
+                                           <span class="icon">★</span>
+                                       </label>
+                                       <label>
+                                           <input type="radio" id="ratingstar3" name="stars" value="3" />
+                                           <span class="icon">★</span>
+                                           <span class="icon">★</span>
+                                           <span class="icon">★</span>
+                                       </label>
+                                       <label>
+                                           <input type="radio" id="ratingstar4" name="stars" value="4" />
+                                           <span class="icon">★</span>
+                                           <span class="icon">★</span>
+                                           <span class="icon">★</span>
+                                           <span class="icon">★</span>
+                                       </label>
+                                       <label>
+                                           <input type="radio" id="ratingstar5" name="stars" value="5" />
+                                           <span class="icon">★</span>
+                                           <span class="icon">★</span>
+                                           <span class="icon">★</span>
+                                           <span class="icon">★</span>
+                                           <span class="icon">★</span>
+                                       </label>
+
+                                   </div>
+                               </div>
+                           </div><!--end col-->
+                           <div class="col-xxl-12">
                                <div class="text-center"> <label for="passwordInput" class="form-label">Active/Inactive</label><br>
 
                                    <input class="form-check-input text-center" name="status" type="checkbox" role="switch" id="productstatus">

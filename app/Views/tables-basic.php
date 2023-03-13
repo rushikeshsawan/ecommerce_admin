@@ -23,19 +23,102 @@
     <meta content="Minimal Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <link rel="shortcut icon" href="<?= base_url() ?>assets/images/favicon.ico">
 
     <!-- Layout config Js -->
-    <script src="assets/js/layout.js"></script>
+    <script src="<?= base_url() ?>assets/js/layout.js"></script>
     <!-- Bootstrap Css -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+    <link href="<?= base_url() ?>assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="//cdn.datatables.net/1.13.3/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
     <!-- Icons Css -->
-    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="<?= base_url() ?>assets/css/icons.min.css" rel="stylesheet" type="text/css" />
     <!-- App Css-->
-    <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
+    <link href="<?= base_url() ?>assets/css/app.min.css" rel="stylesheet" type="text/css" />
     <!-- custom Css-->
-    <link href="assets/css/custom.min.css" rel="stylesheet" type="text/css" />
+    <link href="<?= base_url() ?>assets/css/custom.min.css" rel="stylesheet" type="text/css" />
+    <style>
+        #div {
+            color: white;
+            background: white;
+        }
+
+        .rating {
+            display: inline-block;
+            position: relative;
+            height: 50px;
+            line-height: 50px;
+            font-size: 50px;
+        }
+
+        .rating label {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .rating label:last-child {
+            position: static;
+        }
+
+        .rating label:nth-child(1) {
+            z-index: 5;
+        }
+
+        .rating label:nth-child(2) {
+            z-index: 4;
+        }
+
+        .rating label:nth-child(3) {
+            z-index: 3;
+        }
+
+        .rating label:nth-child(4) {
+            z-index: 2;
+        }
+
+        .rating label:nth-child(5) {
+            z-index: 1;
+        }
+
+        .rating label input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+        }
+
+        .rating label .icon {
+            float: left;
+            color: transparent;
+        }
+
+        .rating label:last-child .icon {
+            color: #f5f5f5;
+        }
+
+        .rating:not(:hover) label input:checked~.icon,
+        .rating:hover label:hover input~.icon {
+            color: #F5C21B;
+            background: -webkit-gradient(linear, left top, left bottom, from(#F5C21B), to(#D17000));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            font-family: "Source Sans Pro", sans-serif;
+            /*   font-size: 13em; */
+            /*   font-weight: 900; */
+            position: relative;
+            text-transform: uppercase;
+
+        }
+
+        .rating label input:focus:not(:checked)~.icon:last-child {
+            color: white;
+            text-shadow: 0 0 5px #09f;
+        }
+    </style>
 
 </head>
 
@@ -65,54 +148,54 @@
                     <div class="col-md-auto col-3">
                         <div class="dropdown topbar-head-dropdown topbar-tag-dropdown justify-content-end">
                             <button type="button" class="btn btn-icon btn-topbar rounded-circle text-white-50 fs-13" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img id="header-lang-img" src="assets/images/flags/us.svg" alt="Header Language" height="16" class="rounded-circle me-2"> <span id="lang-name">English</span>
+                                <img id="header-lang-img" src="<?= base_url() ?>assets/images/flags/us.svg" alt="Header Language" height="16" class="rounded-circle me-2"> <span id="lang-name">English</span>
                             </button>
                             <div class="dropdown-menu dropdown-menu-end">
 
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item notify-item language py-2" data-lang="en" title="English">
-                                    <img src="assets/images/flags/us.svg" alt="user-image" class="me-2 rounded-circle" height="18">
+                                    <img src="<?= base_url() ?>assets/images/flags/us.svg" alt="user-image" class="me-2 rounded-circle" height="18">
                                     <span class="align-middle">English</span>
                                 </a>
 
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="sp" title="Spanish">
-                                    <img src="assets/images/flags/spain.svg" alt="user-image" class="me-2 rounded-circle" height="18">
+                                    <img src="<?= base_url() ?>assets/images/flags/spain.svg" alt="user-image" class="me-2 rounded-circle" height="18">
                                     <span class="align-middle">Española</span>
                                 </a>
 
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="gr" title="German">
-                                    <img src="assets/images/flags/germany.svg" alt="user-image" class="me-2 rounded-circle" height="18"> <span class="align-middle">Deutsche</span>
+                                    <img src="<?= base_url() ?>assets/images/flags/germany.svg" alt="user-image" class="me-2 rounded-circle" height="18"> <span class="align-middle">Deutsche</span>
                                 </a>
 
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="it" title="Italian">
-                                    <img src="assets/images/flags/italy.svg" alt="user-image" class="me-2 rounded-circle" height="18">
+                                    <img src="<?= base_url() ?>assets/images/flags/italy.svg" alt="user-image" class="me-2 rounded-circle" height="18">
                                     <span class="align-middle">Italiana</span>
                                 </a>
 
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="ru" title="Russian">
-                                    <img src="assets/images/flags/russia.svg" alt="user-image" class="me-2 rounded-circle" height="18">
+                                    <img src="<?= base_url() ?>assets/images/flags/russia.svg" alt="user-image" class="me-2 rounded-circle" height="18">
                                     <span class="align-middle">русский</span>
                                 </a>
 
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="ch" title="Chinese">
-                                    <img src="assets/images/flags/china.svg" alt="user-image" class="me-2 rounded-circle" height="18">
+                                    <img src="<?= base_url() ?>assets/images/flags/china.svg" alt="user-image" class="me-2 rounded-circle" height="18">
                                     <span class="align-middle">中国人</span>
                                 </a>
 
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="fr" title="French">
-                                    <img src="assets/images/flags/french.svg" alt="user-image" class="me-2 rounded-circle" height="18">
+                                    <img src="<?= base_url() ?>assets/images/flags/french.svg" alt="user-image" class="me-2 rounded-circle" height="18">
                                     <span class="align-middle">français</span>
                                 </a>
 
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item notify-item language" data-lang="ar" title="Arabic">
-                                    <img src="assets/images/flags/ae.svg" alt="user-image" class="me-2 rounded-circle" height="18">
+                                    <img src="<?= base_url() ?>assets/images/flags/ae.svg" alt="user-image" class="me-2 rounded-circle" height="18">
                                     <span class="align-middle">عربى</span>
                                 </a>
                             </div>
@@ -129,19 +212,19 @@
                         <div class="navbar-brand-box horizontal-logo">
                             <a href="/" class="logo logo-dark">
                                 <span class="logo-sm">
-                                    <img src="assets/images/logo-sm.png" alt="" height="22">
+                                    <img src="<?= base_url() ?>assets/images/logo-sm.png" alt="" height="22">
                                 </span>
                                 <span class="logo-lg">
-                                    <img src="assets/images/logo-dark.png" alt="" height="25">
+                                    <img src="<?= base_url() ?>assets/images/logo-dark.png" alt="" height="25">
                                 </span>
                             </a>
 
                             <a href="/" class="logo logo-light">
                                 <span class="logo-sm">
-                                    <img src="assets/images/logo-sm.png" alt="" height="22">
+                                    <img src="<?= base_url() ?>assets/images/logo-sm.png" alt="" height="22">
                                 </span>
                                 <span class="logo-lg">
-                                    <img src="assets/images/logo-light.png" alt="" height="25">
+                                    <img src="<?= base_url() ?>assets/images/logo-light.png" alt="" height="25">
                                 </span>
                             </a>
                         </div>
@@ -188,19 +271,19 @@
                                     <div class="row g-0">
                                         <div class="col">
                                             <a class="dropdown-icon-item" href="#!">
-                                                <img src="assets/images/brands/github.png" alt="Github">
+                                                <img src="<?= base_url() ?>assets/images/brands/github.png" alt="Github">
                                                 <span>GitHub</span>
                                             </a>
                                         </div>
                                         <div class="col">
                                             <a class="dropdown-icon-item" href="#!">
-                                                <img src="assets/images/brands/bitbucket.png" alt="bitbucket">
+                                                <img src="<?= base_url() ?>assets/images/brands/bitbucket.png" alt="bitbucket">
                                                 <span>Bitbucket</span>
                                             </a>
                                         </div>
                                         <div class="col">
                                             <a class="dropdown-icon-item" href="#!">
-                                                <img src="assets/images/brands/dribbble.png" alt="dribbble">
+                                                <img src="<?= base_url() ?>assets/images/brands/dribbble.png" alt="dribbble">
                                                 <span>Dribbble</span>
                                             </a>
                                         </div>
@@ -209,19 +292,19 @@
                                     <div class="row g-0">
                                         <div class="col">
                                             <a class="dropdown-icon-item" href="#!">
-                                                <img src="assets/images/brands/dropbox.png" alt="dropbox">
+                                                <img src="<?= base_url() ?>assets/images/brands/dropbox.png" alt="dropbox">
                                                 <span>Dropbox</span>
                                             </a>
                                         </div>
                                         <div class="col">
                                             <a class="dropdown-icon-item" href="#!">
-                                                <img src="assets/images/brands/mail_chimp.png" alt="mail_chimp">
+                                                <img src="<?= base_url() ?>assets/images/brands/mail_chimp.png" alt="mail_chimp">
                                                 <span>Mail Chimp</span>
                                             </a>
                                         </div>
                                         <div class="col">
                                             <a class="dropdown-icon-item" href="#!">
-                                                <img src="assets/images/brands/slack.png" alt="slack">
+                                                <img src="<?= base_url() ?>assets/images/brands/slack.png" alt="slack">
                                                 <span>Slack</span>
                                             </a>
                                         </div>
@@ -260,7 +343,7 @@
                                         </div>
                                         <div class="d-block dropdown-item dropdown-item-cart text-wrap px-3 py-2">
                                             <div class="d-flex align-items-center">
-                                                <img src="assets/images/products/img-1.png" class="me-3 rounded-circle avatar-sm p-2 bg-light" alt="user-pic">
+                                                <img src="<?= base_url() ?>assets/images/products/img-1.png" class="me-3 rounded-circle avatar-sm p-2 bg-light" alt="user-pic">
                                                 <div class="flex-grow-1">
                                                     <h6 class="mt-0 mb-1 fs-14">
                                                         <a href="#!" class="text-reset">Branded
@@ -282,7 +365,7 @@
 
                                         <div class="d-block dropdown-item dropdown-item-cart text-wrap px-3 py-2">
                                             <div class="d-flex align-items-center">
-                                                <img src="assets/images/products/img-2.png" class="me-3 rounded-circle avatar-sm p-2 bg-light" alt="user-pic">
+                                                <img src="<?= base_url() ?>assets/images/products/img-2.png" class="me-3 rounded-circle avatar-sm p-2 bg-light" alt="user-pic">
                                                 <div class="flex-grow-1">
                                                     <h6 class="mt-0 mb-1 fs-14">
                                                         <a href="#!" class="text-reset">Bentwood Chair</a>
@@ -303,7 +386,7 @@
 
                                         <div class="d-block dropdown-item dropdown-item-cart text-wrap px-3 py-2">
                                             <div class="d-flex align-items-center">
-                                                <img src="assets/images/products/img-3.png" class="me-3 rounded-circle avatar-sm p-2 bg-light" alt="user-pic">
+                                                <img src="<?= base_url() ?>assets/images/products/img-3.png" class="me-3 rounded-circle avatar-sm p-2 bg-light" alt="user-pic">
                                                 <div class="flex-grow-1">
                                                     <h6 class="mt-0 mb-1 fs-14">
                                                         <a href="#!" class="text-reset">
@@ -325,7 +408,7 @@
 
                                         <div class="d-block dropdown-item dropdown-item-cart text-wrap px-3 py-2">
                                             <div class="d-flex align-items-center">
-                                                <img src="assets/images/products/img-6.png" class="me-3 rounded-circle avatar-sm p-2 bg-light" alt="user-pic">
+                                                <img src="<?= base_url() ?>assets/images/products/img-6.png" class="me-3 rounded-circle avatar-sm p-2 bg-light" alt="user-pic">
                                                 <div class="flex-grow-1">
                                                     <h6 class="mt-0 mb-1 fs-14">
                                                         <a href="#!" class="text-reset">Gray
@@ -346,7 +429,7 @@
 
                                         <div class="d-block dropdown-item dropdown-item-cart text-wrap px-3 py-2">
                                             <div class="d-flex align-items-center">
-                                                <img src="assets/images/products/img-5.png" class="me-3 rounded-circle avatar-sm p-2 bg-light" alt="user-pic">
+                                                <img src="<?= base_url() ?>assets/images/products/img-5.png" class="me-3 rounded-circle avatar-sm p-2 bg-light" alt="user-pic">
                                                 <div class="flex-grow-1">
                                                     <h6 class="mt-0 mb-1 fs-14">
                                                         <a href="#!" class="text-reset">Stillbird Helmet</a>
@@ -464,7 +547,7 @@
                                         <div class="text-reset notification-item d-block dropdown-item position-relative unread-message">
                                             <div class="d-flex">
                                                 <div class="position-relative me-3 flex-shrink-0">
-                                                    <img src="assets/images/users/avatar-2.jpg" class="rounded-circle avatar-xs" alt="user-pic">
+                                                    <img src="<?= base_url() ?>assets/images/users/avatar-2.jpg" class="rounded-circle avatar-xs" alt="user-pic">
                                                     <span class="active-badge position-absolute start-100 translate-middle p-1 bg-success rounded-circle">
                                                         <span class="visually-hidden">New alerts</span>
                                                     </span>
@@ -523,7 +606,7 @@
                                             <div class="d-flex">
 
                                                 <div class="position-relative me-3 flex-shrink-0">
-                                                    <img src="assets/images/users/avatar-8.jpg" class="rounded-circle avatar-xs" alt="user-pic">
+                                                    <img src="<?= base_url() ?>assets/images/users/avatar-8.jpg" class="rounded-circle avatar-xs" alt="user-pic">
                                                     <span class="active-badge position-absolute start-100 translate-middle p-1 bg-warning rounded-circle">
                                                         <span class="visually-hidden">New alerts</span>
                                                     </span>
@@ -562,7 +645,7 @@
                         <div class="dropdown ms-sm-3 header-item topbar-user">
                             <button type="button" class="btn" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="d-flex align-items-center">
-                                    <img class="rounded-circle header-profile-user" src="assets/images/users/avatar-1.jpg" alt="Header Avatar">
+                                    <img class="rounded-circle header-profile-user" src="<?= base_url() ?>assets/images/users/avatar-1.jpg" alt="Header Avatar">
                                     <span class="text-start ms-xl-2">
                                         <span class="d-none d-xl-inline-block ms-1 fw-medium user-name-text">Edward
                                             Diana</span>
@@ -643,7 +726,7 @@
                                         People</h5>
                                     <a href="javascript:void(0);" class="list-group-item dropdown-item notify-item">
                                         <div class="d-flex align-items-center">
-                                            <img src="assets/images/users/avatar-1.jpg" alt="" class="avatar-xs rounded-circle flex-shrink-0 me-2" />
+                                            <img src="<?= base_url() ?>assets/images/users/avatar-1.jpg" alt="" class="avatar-xs rounded-circle flex-shrink-0 me-2" />
                                             <div>
                                                 <h6 class="mb-0">Ayaan Bowen</h6>
                                                 <span class="fs-13 text-muted">React Developer</span>
@@ -652,7 +735,7 @@
                                     </a>
                                     <a href="javascript:void(0);" class="list-group-item dropdown-item notify-item">
                                         <div class="d-flex align-items-center">
-                                            <img src="assets/images/users/avatar-7.jpg" alt="" class="avatar-xs rounded-circle flex-shrink-0 me-2" />
+                                            <img src="<?= base_url() ?>assets/images/users/avatar-7.jpg" alt="" class="avatar-xs rounded-circle flex-shrink-0 me-2" />
                                             <div>
                                                 <h6 class="mb-0">Alexander Kristi</h6>
                                                 <span class="fs-13 text-muted">React Developer</span>
@@ -661,7 +744,7 @@
                                     </a>
                                     <a href="javascript:void(0);" class="list-group-item dropdown-item notify-item">
                                         <div class="d-flex align-items-center">
-                                            <img src="assets/images/users/avatar-5.jpg" alt="" class="avatar-xs rounded-circle flex-shrink-0 me-2" />
+                                            <img src="<?= base_url() ?>assets/images/users/avatar-5.jpg" alt="" class="avatar-xs rounded-circle flex-shrink-0 me-2" />
                                             <div>
                                                 <h6 class="mb-0">Alan Carla</h6>
                                                 <span class="fs-13 text-muted">React Developer</span>
@@ -710,18 +793,18 @@
             <div class="navbar-brand-box">
                 <a href="index.html" class="logo logo-dark">
                     <span class="logo-sm">
-                        <img src="assets/images/logo-sm.png" alt="" height="26">
+                        <img src="<?= base_url() ?>assets/images/logo-sm.png" alt="" height="26">
                     </span>
                     <span class="logo-lg">
-                        <img src="assets/images/logo-dark.png" alt="" height="26">
+                        <img src="<?= base_url() ?>assets/images/logo-dark.png" alt="" height="26">
                     </span>
                 </a>
                 <a href="index.html" class="logo logo-light">
                     <span class="logo-sm">
-                        <img src="assets/images/logo-sm.png" alt="" height="24">
+                        <img src="<?= base_url() ?>assets/images/logo-sm.png" alt="" height="24">
                     </span>
                     <span class="logo-lg">
-                        <img src="assets/images/logo-light.png" alt="" height="24">
+                        <img src="<?= base_url() ?>assets/images/logo-light.png" alt="" height="24">
                     </span>
                 </a>
                 <button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover" id="vertical-hover">
@@ -1013,7 +1096,7 @@
                                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                                             <li><button data-bs-toggle="modal" data-bs-target="#editproductmodal" type="button" class="dropdown-item" onclick="editproductdata(<?= $product['id'] ?>)">Edit</button></li>
 
-                                                            <li><a onclick="deleteProduct(<?= $product['id'] ?>)"  class="dropdown-item" href="#">Delete</a></li>
+                                                            <li><a onclick="deleteProduct(<?= $product['id'] ?>)" class="dropdown-item" href="#">Delete</a></li>
                                                         </ul>
                                                     </div>
                                                 </td>
@@ -1109,6 +1192,45 @@
                                                         <textarea name="productdesc" class="form-control" placeholder="Enter Product Description" required> </textarea>
                                                     </div>
                                                 </div><!--end col-->
+                                                <div class="col-xxl-12">
+                               <label for="emailInput" class="form-label">Product Ratings</label>
+                               <div>
+                                   <div id="div" class="rating">
+
+                                       <label>
+                                           <input type="radio" id="ratingstar1" name="stars" value="1" required/>
+                                           <span class="icon">★</span>
+                                       </label>
+                                       <label>
+                                           <input type="radio" id="ratingstar2" name="stars" value="2" />
+                                           <span class="icon">★</span>
+                                           <span class="icon">★</span>
+                                       </label>
+                                       <label>
+                                           <input type="radio" id="ratingstar3" name="stars" value="3" />
+                                           <span class="icon">★</span>
+                                           <span class="icon">★</span>
+                                           <span class="icon">★</span>
+                                       </label>
+                                       <label>
+                                           <input type="radio" id="ratingstar4" name="stars" value="4" />
+                                           <span class="icon">★</span>
+                                           <span class="icon">★</span>
+                                           <span class="icon">★</span>
+                                           <span class="icon">★</span>
+                                       </label>
+                                       <label>
+                                           <input type="radio" id="ratingstar5" name="stars" value="5" />
+                                           <span class="icon">★</span>
+                                           <span class="icon">★</span>
+                                           <span class="icon">★</span>
+                                           <span class="icon">★</span>
+                                           <span class="icon">★</span>
+                                       </label>
+
+                                   </div>
+                               </div>
+                           </div><!--end col-->
                                                 <div class="col-xxl-12">
                                                     <div class="text-center"> <label for="passwordInput" class="form-label">Active/Inactive</label><br>
 
@@ -1260,19 +1382,21 @@
 
 
     <!-- JAVASCRIPT -->
-    <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/libs/simplebar/simplebar.min.js"></script>
-    <script src="assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
-    <script src="assets/js/plugins.js"></script>
+    
+    <script src="<?= base_url() ?>assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<?= base_url() ?>assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="<?= base_url() ?>assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
+    <!-- <script src="<?= base_url() ?>assets/js/plugins.js"></script> -->
 
     <!-- prismjs plugin -->
-    <script src="assets/libs/prismjs/prism.js"></script>
+    <script src="<?= base_url() ?>assets/libs/prismjs/prism.js"></script>
 
     <!-- App js -->
-    <script src="assets/js/app.js"></script>
+    <!-- <script src="<?= base_url() ?>assets/js/app.js"></script> -->
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <script src="//cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
     <script>
         let table = new DataTable('#categorytable');
@@ -1290,14 +1414,15 @@
                 confirmButtonText: 'Yes, delete it!',
                 closeOnConfirm: false
             }).then(function(response) {
-                if(response==true){
-                    
-                    location.href='/deleteProduct/'+id;
+                if (response == true) {
+
+                    location.href = '/deleteProduct/' + id;
                 }
                 // console.log(response);
-                
+
             });
         }
+
         function deleteCategory(id) {
             swal({
                 title: 'Are you sure?',
@@ -1309,12 +1434,12 @@
                 confirmButtonText: 'Yes, delete it!',
                 closeOnConfirm: false
             }).then(function(response) {
-                if(response==true){
-                    
-                    location.href='/delete/'+id;
+                if (response == true) {
+
+                    location.href = '/delete/' + id;
                 }
                 // console.log(response);
-                
+
             });
         }
 
@@ -1323,7 +1448,7 @@
                     id: edit
                 },
                 function(data, status) {
-                    // console.log(data);
+                    console.log(data);
                     let dataa = jQuery.parseJSON(data);
                     // console.log(dataa['id']);
                     // console.log(dataa[0]['id']);
@@ -1348,12 +1473,17 @@
 
         }
 
+
+
+
+
+
         function editproductdata(edit) {
             $.post("/getupdateproductdata", {
                     id: edit
                 },
                 function(data, status) {
-                    // console.log(data);
+                    console.log(data);
                     let dataa = jQuery.parseJSON(data);
                     // console.log(dataa['id']);
                     // console.log(dataa[0]['id']);
@@ -1366,6 +1496,12 @@
                     $("#productdesc").val(dataa[0]['product_desc']);
                     $("#productimg").val(dataa[0]['product_img']);
                     $("#productprice").val(dataa[0]['product_price']);
+                    let star = dataa[0]['rating'];
+                    let val = '#ratingstar' + star;
+                    // console.log("hello star",val);
+
+                    $('#ratingstar' + star).attr('checked', 'checked');
+                    // $('#ratingstar' + star).attr('checked', 'checked');
                     if (dataa[0]['status'] == 1) {
 
                         $('#productstatus').attr('checked', 'checked');
@@ -1380,6 +1516,15 @@
 
 
         }
+        $("#editproductmodal").on("hidden.bs.modal", function() {
+            // put your default event here
+            for (let i = 1; i < 5; i++) {
+                if ($("#ratingstar" + i).attr('checked')) {
+                    $('#ratingstar' + i).removeAttr('checked');
+                    // console.log('#ratingstar'+i);
+                }
+            }
+        });
     </script>
 </body>
 

@@ -31,6 +31,7 @@ class productController extends BaseController
                 'productimg' => 'required|valid_url',
                 'productdesc' => 'required',
                 'productprice' => 'required',
+                'stars'=>'required',
                 'productcatid' => 'required|is_not_unique[categories.id]'
             ];
 
@@ -41,6 +42,7 @@ class productController extends BaseController
                 $productdesc = $this->request->getVar()['productdesc'];
                 $productprice = $this->request->getVar()['productprice'];
                 $productcatid = $this->request->getVar()['productcatid'];
+                $rating= $this->request->getVar()['stars'];
 
                 $data = [
                     "product_name" => $productname,
@@ -49,6 +51,7 @@ class productController extends BaseController
                     "product_price" => $productprice,
                     "category_id" => $productcatid,
                     "status" => $status,
+                    "rating"=>$rating
                 ];
                 if ($productModel->update($productid, $data)) {
                     $session->setFlashdata("success", "<strong>Data Updated Successfully &#128522;</strong>");
@@ -73,7 +76,8 @@ class productController extends BaseController
                 'productdesc' => 'required',
                 'productimg' => 'required',
                 'productprice' => 'required',
-                'catid' => 'required|is_not_unique[categories.id]'
+                'catid' => 'required|is_not_unique[categories.id]',
+                'stars'=>'required'
             ];
             if ($this->validate($val)) {
                 $productModel = new productModel();
@@ -83,6 +87,7 @@ class productController extends BaseController
                 $productprice = $this->request->getVar()['productprice'];
                 $catid = $this->request->getVar()['catid'];
                 $userid = $session->get("user_id");
+                $rating= $this->request->getVar()['stars'];
                 if (isset($this->request->getVar()['status'])) {
                     $status = 1;
                 } else {
@@ -95,7 +100,8 @@ class productController extends BaseController
                     "product_price" => $productprice,
                     "category_id" => $catid,
                     "user_id" => $userid,
-                    "status" => $status
+                    "status" => $status,
+                    "rating"=>$rating
                 ];
                 if ($productModel->insert($data)) {
 
