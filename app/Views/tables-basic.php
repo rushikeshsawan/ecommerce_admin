@@ -925,7 +925,7 @@
                                                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                                                     <li><button data-bs-toggle="modal" data-bs-target="#exampleModalgrid" type="button" class="dropdown-item" onclick="editdata(<?= $category['id'] ?>)">Edit</button></li>
 
-                                                                    <li><a href="/delete/<?= $category['id'] ?>" class="dropdown-item">Delete</a></li>
+                                                                    <li><a onclick="deleteCategory(<?= $category['id'] ?>)" class="dropdown-item">Delete</a></li>
                                                                 </ul>
                                                             </div>
 
@@ -1013,7 +1013,7 @@
                                                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                                             <li><button data-bs-toggle="modal" data-bs-target="#editproductmodal" type="button" class="dropdown-item" onclick="editproductdata(<?= $product['id'] ?>)">Edit</button></li>
 
-                                                            <li><a href="/deleteProduct/<?= $product['id'] ?>" class="dropdown-item" href="#">Delete</a></li>
+                                                            <li><a onclick="deleteProduct(<?= $product['id'] ?>)"  class="dropdown-item" href="#">Delete</a></li>
                                                         </ul>
                                                     </div>
                                                 </td>
@@ -1272,16 +1272,58 @@
     <script src="assets/js/app.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <script src="//cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <script>
         let table = new DataTable('#categorytable');
         let tablee = new DataTable('#categorytaable');
+
+        function deleteProduct(id) {
+            swal({
+                title: 'Are you sure?',
+                text: 'You will not be able to Restore Data!',
+                icon: 'warning',
+                buttons: ["Stop", "Do it!"],
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!',
+                closeOnConfirm: false
+            }).then(function(response) {
+                if(response==true){
+                    
+                    location.href='/deleteProduct/'+id;
+                }
+                // console.log(response);
+                
+            });
+        }
+        function deleteCategory(id) {
+            swal({
+                title: 'Are you sure?',
+                text: 'You will not be able to Restore Data!',
+                icon: 'warning',
+                buttons: ["Stop", "Do it!"],
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!',
+                closeOnConfirm: false
+            }).then(function(response) {
+                if(response==true){
+                    
+                    location.href='/delete/'+id;
+                }
+                // console.log(response);
+                
+            });
+        }
 
         function editdata(edit) {
             $.post("/getupdatedata", {
                     id: edit
                 },
                 function(data, status) {
-                    console.log(data);
+                    // console.log(data);
                     let dataa = jQuery.parseJSON(data);
                     // console.log(dataa['id']);
                     // console.log(dataa[0]['id']);
@@ -1311,14 +1353,14 @@
                     id: edit
                 },
                 function(data, status) {
-                    console.log(data);
+                    // console.log(data);
                     let dataa = jQuery.parseJSON(data);
                     // console.log(dataa['id']);
                     // console.log(dataa[0]['id']);
                     // console.log(dataa[0].id);
                     // console.log(dataa);
                     $("#productid").val(dataa[0]['id']);
-                    console.log(dataa[0]['category_id']);
+                    // console.log(dataa[0]['category_id']);
                     $("#productcatid").val(dataa[0]['category_id']);
                     $("#productname").val(dataa[0]['product_name']);
                     $("#productdesc").val(dataa[0]['product_desc']);

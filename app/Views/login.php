@@ -13,6 +13,8 @@
     <meta content="Themesbrand" name="author" />
     <!-- App favicon -->
     <link rel="shortcut icon" href="<?= base_url() ?>assets/images/favicon.ico">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 
     <!-- Layout config Js -->
     <script src="<?= base_url() ?>assets/js/layout.js"></script>
@@ -79,11 +81,14 @@
                                     <?php
                                     if (session()->get('error')) {
                                     ?>
-
-                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                            <?= session()->get('error') ?>
+                                        <script>
+                                            
+                                            swal("Sorry!" , "<?= session()->get('error') ?>","error");
+                                        </script>
+                                        <!-- <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                            
                                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                        </div>
+                                        </div> -->
                                     <?php
 
                                     }
@@ -92,20 +97,21 @@
                                     <?php
                                     if (session()->get('success')) {
                                     ?>
-
-                                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                            <?= session()->get('success') ?>
+                                        <script>
+                                            swal("Success!", <?= session()->get('success') ?>, "success");
+                                        </script>
+                                        <!-- <div class="alert alert-success alert-dismissible fade show" role="alert">
                                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                        </div>
+                                        </div> -->
                                     <?php
 
                                     }
 
                                     ?>
-                                    <div class="form-check">
+                                    <!-- <div class="form-check">
                                         <input class="form-check-input" type="checkbox" value="" id="auth-remember-check">
                                         <label class="form-check-label" for="auth-remember-check">Remember me</label>
-                                    </div>
+                                    </div> -->
 
                                     <div class="mt-4">
                                         <button class="btn btn-primary w-100" type="submit">Sign In</button>

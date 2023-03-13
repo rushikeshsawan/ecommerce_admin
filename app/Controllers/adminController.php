@@ -37,11 +37,11 @@ class adminController extends BaseController
                     $session->set("user_id", $result[0]['id']);
                     return redirect()->to('/homepage');
                 } else {
-                    $session->setFlashdata("error", "<strong>Invalid Credentials!</strong> Please Check Your Email & Password.");
+                    $session->setFlashdata("error", "Invalid Credentials! Please Check Your Email & Password.");
                     return view('login');
                 }
             } else {
-                $session->setFlashdata("error", "<strong>Invalid Credentials!</strong> Please Check Your Email & Password.");
+                $session->setFlashdata("error", "Invalid Credentials! Please Check Your Email & Password.");
                 return view('login');
             }
         } else {
@@ -68,30 +68,28 @@ class adminController extends BaseController
     public function gettablecat($table = null)
     {
         $session = session();
-            $res = $this->db->query("SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{$table}'");
-            $res = $res->getResultArray();
-            $res2 = $this->db->query("SELECT * FROM {$table}");
-            $res2 = $res2->getResultArray();
-            $adminController = new adminController();
-            $finalres = $adminController->getIndexedArray($res2);
+        $res = $this->db->query("SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{$table}'");
+        $res = $res->getResultArray();
+        $res2 = $this->db->query("SELECT * FROM {$table}");
+        $res2 = $res2->getResultArray();
+        $adminController = new adminController();
+        $finalres = $adminController->getIndexedArray($res2);
 
-            return view('tablecat', ['tablehead' => $res, 'finalres' => $finalres]);
-        
+        return view('tablecat', ['tablehead' => $res, 'finalres' => $finalres]);
     }
 
     // all table view of category and product in dashboard tablebasic route 
     public function tablebasic()
     {
         $session = session();
-            $result = $this->db->query('SELECT product.id, product.product_name, product.product_desc, product.product_img, product.product_price ,categories.category_name,product.user_id,product.status,product.created_at FROM `product` JOIN categories ON product.category_id= categories.id');
-            $result = $result->getResultArray();
-            $categoriesModel = new categoriesModel();
-            $productModel = new productModel();
-            $category = $categoriesModel->findAll();
-            $res = $this->db->query("SELECT TABLE_NAME AS 'TABLES' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='admin_panel' AND TABLE_NAME LIKE '%_product'");
-            $res = $res->getResultArray();
-            return view('tables-basic', ["categories" => $category, "products" => $result, 'tablecat' => $res]);
-        
+        $result = $this->db->query('SELECT product.id, product.product_name, product.product_desc, product.product_img, product.product_price ,categories.category_name,product.user_id,product.status,product.created_at FROM `product` JOIN categories ON product.category_id= categories.id');
+        $result = $result->getResultArray();
+        $categoriesModel = new categoriesModel();
+        $productModel = new productModel();
+        $category = $categoriesModel->findAll();
+        $res = $this->db->query("SELECT TABLE_NAME AS 'TABLES' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA='admin_panel' AND TABLE_NAME LIKE '%_product'");
+        $res = $res->getResultArray();
+        return view('tables-basic', ["categories" => $category, "products" => $result, 'tablecat' => $res]);
     }
 
 
@@ -193,9 +191,8 @@ class adminController extends BaseController
     public function homepage()
     {
         $session = session();
-       
-            return view('index');
-        
+
+        return view('index');
     }
 
 
