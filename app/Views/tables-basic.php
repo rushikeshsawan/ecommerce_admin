@@ -96,7 +96,7 @@
         }
 
         .rating label:last-child .icon {
-            color: #f5f5f5;
+            color: #696969;
         }
 
         .rating:not(:hover) label input:checked~.icon,
@@ -1061,6 +1061,7 @@
                                             <th scope="col">Description</th>
                                             <th scope="col">Price</th>
                                             <th scope="col">Category</th>
+                                            <th scope="col">Rating</th>
                                             <th scope="col">Date</th>
                                             <th scope="col">Status</th>
                                             <th scope="col" style="width: 150px;">Action</th>
@@ -1085,6 +1086,7 @@
                                                 <td><?= $product['product_desc'] ?></td>
                                                 <td><?= $product['product_price'] ?></td>
                                                 <td><?= $product['category_name'] ?></td>
+                                                <td><?= $product['rating'] ?></td>
                                                 <td><?= date('jS, F Y', strtotime($product['created_at'])) ?></td>
                                                 <td><span class="badge bg-<?php echo ($product['status'] == '1') ? 'success' : 'danger' ?>"><?php echo ($product['status'] == '1') ? 'Active' : 'Inactive' ?></span></td>
                                                 <td>

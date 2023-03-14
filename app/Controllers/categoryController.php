@@ -6,17 +6,18 @@ use App\Models\categoriesModel;
 
 class categoryController extends BaseController
 {
-    public $db;
+    protected $db;
+    protected $session;
     public function __construct()
     {
         $this->db = db_connect();
+        $this->session= session();
     }
 
     public function setupdatecategorydata()
     {
         // print_r($this->request->getVar());
         $categoriesModel = new categoriesModel();
-        $session = session();
             if (isset($this->request->getVar()['status'])) {
                 $status = 1;
             } else {
@@ -42,14 +43,14 @@ class categoryController extends BaseController
                 $categoriesModel->update($category_id, $data);
                 if ($categoriesModel->update($category_id, $data)) {
 
-                    $session->setFlashdata("success", "<strong>Data Updated Successfully &#128522;</strong>");
+                    $this->session->setFlashdata("success", "<strong>Data Updated Successfully &#128522;</strong>");
                     return redirect()->to('tablebasic');
                 } else {
-                    $session->setFlashdata("error", "Data cant update due to technical reason.!");
+                    $this->session->setFlashdata("error", "Data cant update due to technical reason.!");
                     return redirect()->to('tablebasic');
                 }
             } else {
-                $session->setFlashdata("error", "Data cant update due to Invalid data.!");
+                $this->session->setFlashdata("error", "Data cant update due to Invalid data.!");
                 return redirect()->to('tablebasic');
             }
       
@@ -59,7 +60,6 @@ class categoryController extends BaseController
 
     public function addCategory()
     {
-        $session = session();
             $categoriesModel = new categoriesModel();
 
             $val = [
@@ -71,7 +71,7 @@ class categoryController extends BaseController
                 $catname = $this->request->getVar()['catname'];
                 $catdesc = $this->request->getVar()['catdesc'];
                 $catimg = $this->request->getVar()['catimg'];
-                $userid = $session->get("user_id");
+                $userid = $this->session->get("user_id");
                 if (isset($this->request->getVar()['status'])) {
                     $status = 1;
                     echo "status set";
@@ -88,14 +88,14 @@ class categoryController extends BaseController
                 ];
                 if ($categoriesModel->insert($data)) {
 
-                    $session->setFlashdata("success", "<strong>Data Inserted Successfully &#128522;</strong>");
+                    $this->session->setFlashdata("success", "<strong>Data Inserted Successfully &#128522;</strong>");
                     return redirect()->to('tablebasic');
                 } else {
-                    $session->setFlashdata("error", "Data cannot be inserted due to technical reason.!");
+                    $this->session->setFlashdata("error", "Data cannot be inserted due to technical reason.!");
                     return redirect()->to('tablebasic');
                 }
             } else {
-                $session->setFlashdata("error", "Data cannot be inserted due to Invalid data.!");
+                $this->session->setFlashdata("error", "Data cannot be inserted due to Invalid data.!");
                 return redirect()->to('tablebasic');
             }
        
@@ -104,7 +104,6 @@ class categoryController extends BaseController
 
     public function deletecategory($num = null)
     {
-        $session = session();
 
             if ($num != null) {
                 $userModel = new categoriesModel();
@@ -112,10 +111,10 @@ class categoryController extends BaseController
                     "id" => $num
                 ];
                 if ($userModel->delete($delete)) {
-                    $session->setFlashdata("success", "Data Deleted Successfully..!");
+                    $this->session->setFlashdata("success", "Data Deleted Successfully..!");
                     return redirect()->to('tablebasic');
                 } else {
-                    $session->setFlashdata("error", "Issues Deleting the data, Please Try again After Sometime..!");
+                    $this->session->setFlashdata("error", "Issues Deleting the data, Please Try again After Sometime..!");
                     return redirect()->to('tablebasic');
                 }
             }

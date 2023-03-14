@@ -8,10 +8,12 @@ use App\Models\productModel;
 
 class adminController extends BaseController
 {
-    public $db;
+    protected $db;
+    protected $session;
     public function __construct()
     {
         $this->db = db_connect();
+        $this->session = session();
     }
 
 
@@ -20,7 +22,7 @@ class adminController extends BaseController
     {
 
         $adminModel = new adminModel();
-        $session = session();
+        $this->session = session();
         if ($this->request->getMethod() == "post") {
             $data = [
                 'email' => 'required|valid_email',
@@ -33,15 +35,15 @@ class adminController extends BaseController
 
                 $result = $adminModel->where('email', $email)->where('password', $password)->findAll();
                 if (count($result) > 0) {
-                    $session->set("username", $email);
-                    $session->set("user_id", $result[0]['id']);
+                    $this->session->set("username", $email);
+                    $this->session->set("user_id", $result[0]['id']);
                     return redirect()->to('/homepage');
                 } else {
-                    $session->setFlashdata("error", "Invalid Credentials! Please Check Your Email & Password.");
+                    $this->session->setFlashdata("error", "Invalid Credentials! Please Check Your Email & Password.");
                     return view('login');
                 }
             } else {
-                $session->setFlashdata("error", "Invalid Credentials! Please Check Your Email & Password.");
+                $this->session->setFlashdata("error", "Invalid Credentials! Please Check Your Email & Password.");
                 return view('login');
             }
         } else {
@@ -67,7 +69,6 @@ class adminController extends BaseController
     // sidebar all table view and all table data view inside it.
     public function gettablecat($table = null)
     {
-        $session = session();
         $res = $this->db->query("SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '{$table}'");
         $res = $res->getResultArray();
         $res2 = $this->db->query("SELECT * FROM {$table}");
@@ -81,8 +82,7 @@ class adminController extends BaseController
     // all table view of category and product in dashboard tablebasic route 
     public function tablebasic()
     {
-        $session = session();
-        $result = $this->db->query('SELECT product.id, product.product_name, product.product_desc, product.product_img, product.product_price ,categories.category_name,product.user_id,product.status,product.created_at FROM `product` JOIN categories ON product.category_id= categories.id');
+        $result = $this->db->query('SELECT product.id,product.rating, product.product_name, product.product_desc, product.product_img, product.product_price ,categories.category_name,product.user_id,product.status,product.created_at FROM `product` JOIN categories ON product.category_id= categories.id');
         $result = $result->getResultArray();
         $categoriesModel = new categoriesModel();
         $productModel = new productModel();
@@ -96,7 +96,6 @@ class adminController extends BaseController
     // after inserting otp function 
     public function resetpassword()
     {
-        $session = session();
         if ($this->request->getMethod() == "post") {
             $adminModel = new adminModel();
             $email = $this->request->getVar()['email'];
@@ -116,14 +115,14 @@ class adminController extends BaseController
                 if (count($result) > 0) {
                     $id = $result[0]['id'];
                     $adminModel->update($id, ['password' => $password, 'otp' => '', 'status' => '0']);
-                    $session->setFlashdata("success", "Your password has been successfully reseted");
+                    $this->session->setFlashdata("success", "Your password has been successfully reseted");
                     return redirect()->to('/login');
                 } else {
-                    $session->setFlashdata("Error", "Record Not found, please Signup to register account.");
+                    $this->session->setFlashdata("Error", "Record Not found, please Signup to register account.");
                 }
             } else {
                 $error = $this->validator->getErrors();
-                $session->setFlashdata("success", "Invalid OTP or Password");
+                $this->session->setFlashdata("success", "Invalid OTP or Password");
                 return view('forget-password', ['email' => $email, 'validation' => $error]);
             }
         }
@@ -134,7 +133,6 @@ class adminController extends BaseController
     {
         if ($this->request->getMethod() == "post") {
             $adminModel = new adminModel();
-            $session = session();
             $data = ['email' => 'required|valid_email|is_not_unique[admin_login.email]'];
             if ($this->validate($data)) {
 
@@ -166,19 +164,19 @@ class adminController extends BaseController
                     if ($retval == true) {
                         $data = ["otp" => $otp, "status" => "1"];
                         $adminModel->update($id, $data);
-                        $session->setFlashdata("success", "OTP sent successfully to {$email}, Please check your email");
-                        $session->setFlashdata("email", $email);
+                        $this->session->setFlashdata("success", "OTP sent successfully to {$email}, Please check your email");
+                        $this->session->setFlashdata("email", $email);
                         return view('forget-password');
                     } else {
-                        $session->setFlashdata("Error", "We think You are not Registered, Please Register and then continue.");
+                        $this->session->setFlashdata("Error", "We think You are not Registered, Please Register and then continue.");
                         return view('forget-password');
                     }
                 } else {
-                    $session->setFlashdata("Error", "We think You are not Registered, Please Register and then continue.");
+                    $this->session->setFlashdata("Error", "We think You are not Registered, Please Register and then continue.");
                     return redirect()->back()->withInput();
                 }
             } else {
-                $session->setFlashdata("Error", "Please Enter Valid Credentials.");
+                $this->session->setFlashdata("Error", "Please Enter Valid Credentials.");
                 return redirect()->back()->withInput();
             }
         } else {
@@ -190,8 +188,6 @@ class adminController extends BaseController
     // homepage function 
     public function homepage()
     {
-        $session = session();
-
         return view('index');
     }
 
@@ -201,7 +197,7 @@ class adminController extends BaseController
     public function logout()
     {
 
-        session()->destroy();
+        $this->session->destroy();
         return redirect()->to('/login');
     }
 

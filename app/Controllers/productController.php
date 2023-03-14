@@ -8,10 +8,12 @@ use App\Models\productModel;
 
 class productController extends BaseController
 {
-    public $db;
+    protected $db;
+    protected $session;
     public function __construct()
     {
         $this->db = db_connect();
+        $this->session= session();
     }
 
 
@@ -19,7 +21,6 @@ class productController extends BaseController
     public function editProduct()
     {
         $productModel = new productModel();
-        $session = session();
             if (isset($this->request->getVar()['status'])) {
                 $status = 1;
             } else {
@@ -54,14 +55,14 @@ class productController extends BaseController
                     "rating"=>$rating
                 ];
                 if ($productModel->update($productid, $data)) {
-                    $session->setFlashdata("success", "<strong>Data Updated Successfully &#128522;</strong>");
+                    $this->session->setFlashdata("success", "<strong>Data Updated Successfully &#128522;</strong>");
                     return redirect()->to('tablebasic');
                 } else {
-                    $session->setFlashdata("error", "Data cant update due to technical reason.!");
+                    $this->session->setFlashdata("error", "Data cant update due to technical reason.!");
                     return redirect()->to('tablebasic');
                 }
             } else {
-                $session->setFlashdata("error", "Data cant update due to Invalid Data.!");
+                $this->session->setFlashdata("error", "Data cant update due to Invalid Data.!");
                 return redirect()->to('tablebasic');
             }
        
@@ -69,7 +70,6 @@ class productController extends BaseController
 
     public function addProduct()
     {
-        $session = session();
 
             $val = [
                 'productname' => 'required',
@@ -86,7 +86,7 @@ class productController extends BaseController
                 $productimg = $this->request->getVar()['productimg'];
                 $productprice = $this->request->getVar()['productprice'];
                 $catid = $this->request->getVar()['catid'];
-                $userid = $session->get("user_id");
+                $userid = $this->session->get("user_id");
                 $rating= $this->request->getVar()['stars'];
                 if (isset($this->request->getVar()['status'])) {
                     $status = 1;
@@ -105,14 +105,14 @@ class productController extends BaseController
                 ];
                 if ($productModel->insert($data)) {
 
-                    $session->setFlashdata("success", "<strong>Product Inserted Successfully &#128522;</strong>");
+                    $this->session->setFlashdata("success", "<strong>Product Inserted Successfully &#128522;</strong>");
                     return redirect()->to('tablebasic');
                 } else {
-                    $session->setFlashdata("error", "Product cannot be inserted due to technical reason.!");
+                    $this->session->setFlashdata("error", "Product cannot be inserted due to technical reason.!");
                     return redirect()->to('tablebasic');
                 }
             } else {
-                $session->setFlashdata("error", "Product cannot be inserted due to Invalid data.!");
+                $this->session->setFlashdata("error", "Product cannot be inserted due to Invalid data.!");
                 return redirect()->to('tablebasic');
             }
         
@@ -123,18 +123,16 @@ class productController extends BaseController
     // Delete Single Data from Database 
     public function deleteProduct($num = null)
     {
-        $session = session();
-
             if ($num != null) {
                 $userModel = new productModel();
                 $delete = [
                     "id" => $num
                 ];
                 if ($userModel->delete($delete)) {
-                    $session->setFlashdata("success", "Data Deleted Successfully..!");
+                    $this->session->setFlashdata("success", "Data Deleted Successfully..!");
                     return redirect()->to('tablebasic');
                 } else {
-                    $session->setFlashdata("error", "Issues Deleting the data, Please Try again After Sometime..!");
+                    $this->session->setFlashdata("error", "Issues Deleting the data, Please Try again After Sometime..!");
                     return redirect()->to('tablebasic');
                 }
             }
@@ -147,7 +145,6 @@ class productController extends BaseController
     public function getupdateproductdata()
     {
         $id = $this->request->getVar();
-        $session = session();
             $userModel = new productModel();
             $data = $userModel->where($id)->find();
             return json_encode($data);
